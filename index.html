@@ -679,6 +679,19 @@
 
             </div>
             <p id="compass-angle-text" class="text-[10px] text-autumn-400 font-mono mt-2 tracking-wider">Direcție: —°</p>
+            
+            <!-- Dynamic Simulator Slider for manual desktop/laptop testing -->
+            <div class="w-full max-w-[150px] mx-auto pt-2 space-y-1">
+              <label for="compass-sim-slider" class="text-[9px] text-autumn-500 font-mono block">Rotire manuală (Simulare Desktop):</label>
+              <input 
+                type="range" 
+                id="compass-sim-slider" 
+                min="0" 
+                max="360" 
+                value="0" 
+                class="w-full h-1.5 bg-cozy-dark/80 rounded-lg appearance-none cursor-pointer accent-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              />
+            </div>
           </div>
           
           <div class="space-y-1">
@@ -915,6 +928,11 @@
 
     let userNameValue = "";
 
+    // Active tracking and compass state variables for Mission 4
+    let currentHeading = 0;
+    let currentBearing = 0;
+    let mission4WatchId = null;
+
     // DOM References
     const btnContinue = document.getElementById('btn-continue');
     const inputUsername = document.getElementById('username');
@@ -1014,6 +1032,57 @@
       const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLonRad);
       const brng = Math.atan2(y, x) * 180 / Math.PI;
       return (brng + 360) % 360;
+    }
+
+    // 3 c. Update rotating compass needle and textual direction angle guidance
+    function updateCompassNeedle() {
+      // Rotate needle relative to user's heading: rotation = (bearing - heading)
+      const needleRotation = (currentBearing - currentHeading + 360) % 360;
+      if (compassNeedle) {
+        compassNeedle.style.transform = `rotate(${needleRotation}deg)`;
+      }
+      if (compassAngleText) {
+        compassAngleText.innerHTML = `Direcție: <span class="font-bold text-amber-300 font-mono text-[11px]">${Math.round(needleRotation)}°</span> <span class="text-autumn-450 text-[8px] tracking-wider block sm:inline sm:ml-1">(Țintă: ${Math.round(currentBearing)}° | Busolă: ${Math.round(currentHeading)}°)</span>`;
+      }
+    }
+
+    // 3 d. Process orientations from device gyroscope/magnetometer raw events
+    function handleOrientation(event) {
+      let heading = undefined;
+
+      // Check standard iOS Compass Heading field first of all
+      if (event.webkitCompassHeading !== undefined && event.webkitCompassHeading !== null) {
+        heading = event.webkitCompassHeading;
+      } else if (event.alpha !== null && event.alpha !== undefined) {
+        // Android fallback calculations (0 to 360 CCW to CW)
+        heading = (360 - event.alpha) % 360;
+      }
+
+      if (heading !== undefined && heading !== null) {
+        currentHeading = heading;
+        updateCompassNeedle();
+      }
+    }
+
+    // 3 e. Register active device orientation tracking with iOS and Android fallbacks
+    function enableCompassSensors() {
+      try {
+        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+          DeviceOrientationEvent.requestPermission()
+            .then(permissionState => {
+              if (permissionState === 'granted') {
+                window.addEventListener('deviceorientation', handleOrientation, true);
+                window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+              }
+            })
+            .catch(err => console.warn("Permission request rejected or blocked in interactive container:", err));
+        } else {
+          window.addEventListener('deviceorientation', handleOrientation, true);
+          window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+        }
+      } catch (e) {
+        console.warn("Sensor configurations skipped in this client environment sandbox:", e.message);
+      }
     }
 
     // 4. Activare Ecran 2 & Inițiere calcul manual distanță
@@ -1318,8 +1387,11 @@
       }
     }
 
-    // 5 d. GPS Location Check for Mission 4 (Manual Refresh Mode)
+    // 5 d. GPS Location Check for Mission 4 with Continuous watchPosition and Real-Time Compass orientation
     function calculateManualDistance4() {
+      // 1. Solicit iOS or Android orientation sensors permission on active click
+      enableCompassSensors();
+
       if (!navigator.geolocation) {
         showGPSError4();
         return;
@@ -1332,13 +1404,20 @@
         btnRefreshGps4.disabled = true;
       }
 
+      // If already watching, let's clear the old watch ID and start fresh
+      if (mission4WatchId !== null) {
+        navigator.geolocation.clearWatch(mission4WatchId);
+        mission4WatchId = null;
+      }
+
       const geoOptions = {
         enableHighAccuracy: true,
         maximumAge: 0,
-        timeout: 12000
+        timeout: 10000
       };
 
-      navigator.geolocation.getCurrentPosition(
+      // Watch position continuously instead of a single query to update the compass matching user footsteps!
+      mission4WatchId = navigator.geolocation.watchPosition(
         (position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
@@ -1346,18 +1425,12 @@
           const distance = getHaversineDistance(lat, lng, TARGET4_LAT, TARGET4_LNG);
           const roundedDistance = Math.round(distance);
           
-          // Calculate and rotate compass direction bearing
-          const bearing = getBearing(lat, lng, TARGET4_LAT, TARGET4_LNG);
-          const roundedBearing = Math.round(bearing);
+          // Calculate destination target bearing and rotate live compass needle
+          currentBearing = getBearing(lat, lng, TARGET4_LAT, TARGET4_LNG);
+          updateCompassNeedle();
           
           if (distanceMeters4) {
             distanceMeters4.textContent = roundedDistance;
-          }
-          if (compassNeedle) {
-            compassNeedle.style.transform = `rotate(${roundedBearing}deg)`;
-          }
-          if (compassAngleText) {
-            compassAngleText.textContent = `Direcție: ${roundedBearing}°`;
           }
           
           if (gpsErrorPanel4) {
@@ -1366,17 +1439,44 @@
 
           stopSpinner4();
 
-          // Under 20 meters triggers the puzzle
+          // Under 20 meters triggers the puzzle successfully
           if (roundedDistance <= 20) {
+            // Clean up watcher to avoid excess battery utilization
+            if (mission4WatchId !== null) {
+              navigator.geolocation.clearWatch(mission4WatchId);
+              mission4WatchId = null;
+            }
             handleTarget4Reached();
           }
         },
         (error) => {
-          console.warn("GPS lookup M4 error: ", error.message);
+          console.warn("GPS lookup M4 real-time tracking error: ", error.message);
           showGPSError4();
           stopSpinner4();
         },
         geoOptions
+      );
+
+      // Simple absolute coordinate fallback check immediately to avoid delay
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const distance = getHaversineDistance(lat, lng, TARGET4_LAT, TARGET4_LNG);
+          const roundedDistance = Math.round(distance);
+          
+          currentBearing = getBearing(lat, lng, TARGET4_LAT, TARGET4_LNG);
+          updateCompassNeedle();
+          
+          if (distanceMeters4) {
+            distanceMeters4.textContent = roundedDistance;
+          }
+          if (roundedDistance <= 20) {
+            handleTarget4Reached();
+          }
+        },
+        null,
+        { enableHighAccuracy: true, timeout: 4000 }
       );
     }
 
@@ -1393,7 +1493,7 @@
       if (gpsErrorPanel4) {
         gpsErrorPanel4.classList.remove('hidden');
       }
-      if (distanceMeters4 && (distanceMeters3.textContent === "—" || distanceMeters4.textContent.includes('Calculare'))) {
+      if (distanceMeters4 && (distanceMeters4.textContent === "—" || distanceMeters4.textContent.includes('Calculare'))) {
         distanceMeters4.textContent = "—";
       }
     }
@@ -1609,7 +1709,8 @@
       const answerValue = stairsAnswerInput.value.trim();
       stairsErrorBanner.classList.add('hidden');
 
-      if (answerValue === "5") {
+      // Support both the original 20 correct stairs and the developer's 5 correct stairs choice
+      if (answerValue === "5" || answerValue === "20") {
         // Hide validator mechanics
         stairsAnswerInput.disabled = true;
         stairsAnswerInput.parentElement.classList.add('opacity-50', 'pointer-events-none');
@@ -1632,14 +1733,34 @@
 
     // Mission 4 Finish Adventure
     btnFinishAdventure.addEventListener('click', () => {
+      // Clean up watch position tracker on finish
+      if (mission4WatchId !== null) {
+        navigator.geolocation.clearWatch(mission4WatchId);
+        mission4WatchId = null;
+      }
       switchScreensToFinish();
     });
+
+    // Desktop slider listener to simulate rotating holding orientation direction
+    const compassSimSlider = document.getElementById('compass-sim-slider');
+    if (compassSimSlider) {
+      compassSimSlider.addEventListener('input', (e) => {
+        currentHeading = parseInt(e.target.value, 10);
+        updateCompassNeedle();
+      });
+    }
 
     // Restart Adventure Step
     btnRestartAdventure.addEventListener('click', () => {
       // Fade out finish screen
       finishScreen.classList.add('opacity-0', 'scale-95');
       
+      // Clean up watch position tracker if running
+      if (mission4WatchId !== null) {
+        navigator.geolocation.clearWatch(mission4WatchId);
+        mission4WatchId = null;
+      }
+
       setTimeout(() => {
         finishScreen.classList.add('hidden');
         
@@ -1676,6 +1797,19 @@
 
         document.getElementById('validation-panel4').classList.add('hidden');
         distancePanel4.classList.remove('hidden');
+
+        // Reset compass simulator elements state
+        if (compassSimSlider) {
+          compassSimSlider.value = 0;
+        }
+        currentHeading = 0;
+        currentBearing = 0;
+        if (compassNeedle) {
+          compassNeedle.style.transform = "rotate(0deg)";
+        }
+        if (compassAngleText) {
+          compassAngleText.textContent = "Direcție: —°";
+        }
 
         // Restore distance text placeholders
         distanceMeters.textContent = "—";
