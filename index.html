@@ -138,7 +138,7 @@
       </div>
       <span class="font-display font-medium text-sm tracking-wider text-amber-400 uppercase">Urban Hunter</span>
     </div>
-    <div class="text-xs font-mono text-autumn-400/80 bg-cozy-card/40 py-1 px-2.5 rounded-full border border-cozy-border/30 backdrop-blur-sm">
+    <div class="text-xs font-mono text-autumn-400/80 bg-cozy-card/40 py-1 px-2.5 rounded-full border border-cozy-border/30 backdrop-blur-sm" id="mission-badge">
       Bucharest • Misiunea 1
     </div>
   </header>
@@ -244,7 +244,7 @@
             alt="Dominos Bucharest" 
             referrerPolicy="no-referrer"
             class="w-full h-44 object-cover transition-transform duration-700 group-hover:scale-105"
-            onerror="this.src='https://images.unsplash.com/photo-1549693578-d683be217e58?auto=format&fit=crop&q=80&w=600&h=400'; console.log('dominos.jpg is clean but empty, fallback Unsplash loaded smoothly');"
+            onerror="this.src='https://images.unsplash.com/photo-1549693578-d683be217e58?auto=format&fit=crop&q=80&w=600&h=400'; console.log('dominos.jpg fallback loaded smoothly');"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-transparent to-transparent pointer-events-none"></div>
           
@@ -295,7 +295,7 @@
         <!-- GPS Request/Error Warning panel (Initially hidden, revealed if permission denied) -->
         <div id="gps-error-panel" class="hidden bg-autumn-950/80 border border-autumn-800/40 rounded-xl p-3.5 text-xs text-autumn-200 flex items-start gap-2.5 animate-fade-in-up">
           <i data-lucide="alert-triangle" class="w-5 h-5 text-autumn-500 shrink-0 mt-0.5"></i>
-          <div class="space-y-1">
+          <div class="space-y-1 text-left">
             <span class="font-bold font-display text-amber-300/90 text-xs">Aparatul are nevoie de locație</span>
             <p class="text-autumn-400 leading-relaxed text-[11px]">
               Activează permisiunea GPS pe telefon pentru a naviga. Dacă ești pe desktop, folosește funcția de Simulare sosire de mai sus.
@@ -323,6 +323,143 @@
             <i data-lucide="unlocked" class="w-4 h-4 text-cozy-dark"></i>
             <span>Deblochează Indiciul</span>
           </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= ECRANUL 3: Pasul 3 - Active Mission Screen 2 (Hidden Initially) ================= -->
+    <div id="mission2-screen" class="hidden opacity-0 transform scale-95 transition-all duration-500 space-y-6">
+      
+      <!-- Explorer Welcome Title -->
+      <div class="text-center space-y-3">
+        <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
+          Misiunea #2 • Blind GPS
+        </div>
+        
+        <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
+          Bătrânul București
+        </h2>
+        
+        <p class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
+          Urmărește distanța de pe ecran până ajungi aproape de 0. Nu ai hartă, mergi pe instinct. Când ajungi la destinație, caută numărul de pe clădire.
+        </p>
+      </div>
+
+      <!-- Main Mission Clue and Distance Card -->
+      <div class="bg-gradient-to-b from-cozy-card to-cozy-card/90 border border-cozy-border rounded-2xl p-5 shadow-xl shadow-black/40 space-y-5 backdrop-blur-md relative overflow-hidden">
+        <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent"></div>
+
+        <!-- Manual Distance Tracker Grid for Mission 2 -->
+        <div id="distance-panel2" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
+          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
+            <span class="relative flex h-2 w-2">
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            Senzor GPS Pasiv
+          </div>
+          
+          <div class="space-y-1">
+            <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
+              Ești la <span id="distance-meters2">—</span> metri distanță
+            </p>
+            <p id="distance-helper-text2" class="text-[11px] text-autumn-500">apasă pe buton pentru a recalcula distanța</p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <button 
+              id="btn-refresh-gps2"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon2"></i>
+              <span id="refresh-btn-text2">Verifică Distanța / Refresh</span>
+            </button>
+
+            <!-- Subtle Tester Assistant for Mission 2 -->
+            <button 
+              id="btn-simulate-gps2"
+              type="button"
+              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+            >
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
+              Simulează Sosirea (&lt;15m)
+            </button>
+          </div>
+        </div>
+
+        <!-- Clue Code Validation Input Element Group -->
+        <div id="validation-panel2" class="space-y-4 pt-4 border-t border-cozy-border/30">
+          <div>
+            <label for="building-number" class="block text-xs font-semibold uppercase tracking-widest text-autumn-300 text-center mb-2">
+              Numărul clădirii descoperite
+            </label>
+            
+            <div class="relative max-w-[210px] mx-auto">
+              <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-autumn-400/60 font-medium">
+                #
+              </span>
+              <input 
+                type="number" 
+                id="building-number" 
+                placeholder="Ex. 15 sau 40" 
+                class="w-full bg-cozy-input border border-cozy-border rounded-xl py-3 pl-9 pr-4 text-center font-display font-bold text-lg text-amber-100 placeholder-autumn-500/30 focus:outline-none focus:ring-1 focus:ring-autumn-500 focus:border-autumn-500 transition-all shadow-inner"
+              />
+            </div>
+          </div>
+
+          <!-- Error Alert State banner for building validation checks -->
+          <div 
+            id="clue-error-banner" 
+            class="hidden bg-autumn-950/85 border border-autumn-900/50 rounded-xl p-3 flex justify-center items-center gap-2 text-xs text-autumn-300 animate-fade-in-up"
+          >
+            <i data-lucide="x-circle" class="w-4 h-4 text-autumn-550"></i>
+            <span>Nu e numărul corect, mai caută.</span>
+          </div>
+
+          <!-- Success banner and Next Mission triggers -->
+          <div 
+            id="clue-success-banner" 
+            class="hidden bg-emerald-950/80 border border-emerald-800/40 rounded-xl p-4 text-center space-y-3 text-xs text-emerald-200 animate-fade-in-up"
+          >
+            <div class="flex items-center justify-center gap-1.5 text-emerald-400 font-semibold font-display text-sm">
+              <i data-lucide="shield-check" class="w-4.5 h-4.5"></i>
+              <span>Cod acceptat! Locație securizată.</span>
+            </div>
+            <p class="text-autumn-300 leading-relaxed text-[11px] max-w-xs mx-auto">
+              Felicitări! Ai decodat indiciul ascuns pe fațada bătrânei clădiri istorice din București.
+            </p>
+            
+            <button 
+              id="btn-next-mission" 
+              type="button"
+              class="w-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-505 hover:from-emerald-600 text-white font-display font-semibold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+            >
+              <span>Mergi la următoarea misiune</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <button 
+            id="btn-verify-clue" 
+            type="button"
+            class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Verifică Indiciul</span>
+            <i data-lucide="check" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- GPS Request/Error Warning panel for Mission 2 (Initially hidden) -->
+        <div id="gps-error-panel2" class="hidden bg-autumn-950/80 border border-autumn-800/40 rounded-xl p-3.5 text-xs text-autumn-200 flex items-start gap-2.5 animate-fade-in-up">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-autumn-500 shrink-0 mt-0.5"></i>
+          <div class="space-y-1 text-left">
+            <span class="font-bold font-display text-amber-300/90 text-xs">Senzorul are nevoie de locație</span>
+            <p class="text-autumn-400 leading-relaxed text-[11px]">
+              Activează permisiunea GPS pe telefon sau utilizează simularile noastre de mediu.
+            </p>
+          </div>
         </div>
 
       </div>
@@ -384,9 +521,13 @@
 
     createFallingLeaves();
 
-    // 2. Coordonate Țintă - Pasul 2 (Misiunea 1)
+    // 2. Coordonate Țintă - Pasul 2 & Pasul 3
     const TARGET_LAT = 44.41366563568896;
     const TARGET_LNG = 26.178631158547372;
+
+    const TARGET2_LAT = 44.415558;
+    const TARGET2_LNG = 26.178644;
+
     let userNameValue = "";
 
     // DOM References
@@ -394,11 +535,14 @@
     const inputUsername = document.getElementById('username');
     const errorBanner = document.getElementById('error-banner');
     
+    // Screens References
     const setupScreen = document.getElementById('setup-screen');
     const missionScreen = document.getElementById('mission-screen');
+    const mission2Screen = document.getElementById('mission2-screen');
     const missionUserName = document.getElementById('mission-user-name');
-    
-    // Mission UI Elements
+    const missionBadge = document.getElementById('mission-badge');
+
+    // Mission 1 UI Elements
     const destinationImageContainer = document.getElementById('destination-image-container');
     const distancePanel = document.getElementById('distance-panel');
     const distanceMeters = document.getElementById('distance-meters');
@@ -408,6 +552,20 @@
     const btnSimulateGps = document.getElementById('btn-simulate-gps');
     const btnRefreshGps = document.getElementById('btn-refresh-gps');
     const refreshIcon = document.getElementById('refresh-icon');
+
+    // Mission 2 UI Elements
+    const distanceMeters2 = document.getElementById('distance-meters2');
+    const btnRefreshGps2 = document.getElementById('btn-refresh-gps2');
+    const refreshIcon2 = document.getElementById('refresh-icon2');
+    const btnSimulateGps2 = document.getElementById('btn-simulate-gps2');
+    const gpsErrorPanel2 = document.getElementById('gps-error-panel2');
+    
+    // Validation Part 2 UI Elements
+    const buildingNumberInput = document.getElementById('building-number');
+    const clueErrorBanner = document.getElementById('clue-error-banner');
+    const clueSuccessBanner = document.getElementById('clue-success-banner');
+    const btnVerifyClue = document.getElementById('btn-verify-clue');
+    const btnNextMission = document.getElementById('btn-next-mission');
 
     // 3. Formula Haversine pentru a calcula distanța în metri
     function getHaversineDistance(lat1, lon1, lat2, lon2) {
@@ -430,9 +588,8 @@
       setTimeout(() => {
         setupScreen.classList.add('hidden');
         
-        // Show mission screen
+        // Show mission screen 1
         missionScreen.classList.remove('hidden');
-        // Trigger small delayed reflow for CSS transition
         setTimeout(() => {
           missionScreen.classList.remove('opacity-0', 'scale-95');
           missionScreen.classList.add('opacity-100', 'scale-100');
@@ -443,14 +600,35 @@
       }, 450);
     }
 
-    // 5. GPS Location Check with getCurrentPosition (Triggers only manually when Refresh button is pressed)
+    // Activare Ecran 3 (Misiunea 2)
+    function switchScreensToMission2() {
+      // Fade out mission screen 1
+      missionScreen.classList.add('opacity-0', 'scale-95');
+      
+      setTimeout(() => {
+        missionScreen.classList.add('hidden');
+        
+        // Show mission screen 2
+        mission2Screen.classList.remove('hidden');
+        missionBadge.textContent = "Bucharest • Misiunea 2";
+        
+        setTimeout(() => {
+          mission2Screen.classList.remove('opacity-0', 'scale-95');
+          mission2Screen.classList.add('opacity-100', 'scale-100');
+        }, 30);
+
+        // Perform initial calculation for Mission 2 Target
+        calculateManualDistance2();
+      }, 450);
+    }
+
+    // 5. GPS Location Check for Mission 1 (Manual Refresh)
     function calculateManualDistance() {
       if (!navigator.geolocation) {
         showGPSError();
         return;
       }
 
-      // Add rotation animation during search
       if (refreshIcon) {
         refreshIcon.classList.add('animate-spin');
       }
@@ -506,36 +684,109 @@
       }
     }
 
-    // 6. Declanșare succes când utilizatorul scade sub 15 metri de țintă
+
+    // 5 b. GPS Location Check for Mission 2 (Manual Refresh)
+    function calculateManualDistance2() {
+      if (!navigator.geolocation) {
+        showGPSError2();
+        return;
+      }
+
+      if (refreshIcon2) {
+        refreshIcon2.classList.add('animate-spin');
+      }
+      if (btnRefreshGps2) {
+        btnRefreshGps2.disabled = true;
+      }
+
+      const geoOptions = {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 12000
+      };
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          
+          const distance = getHaversineDistance(lat, lng, TARGET2_LAT, TARGET2_LNG);
+          const roundedDistance = Math.round(distance);
+          
+          distanceMeters2.textContent = roundedDistance;
+          gpsErrorPanel2.classList.add('hidden');
+
+          stopSpinner2();
+
+          if (roundedDistance <= 15) {
+            handleTarget2Reached();
+          }
+        },
+        (error) => {
+          console.warn("GPS lookup M2 error: ", error.message);
+          showGPSError2();
+          stopSpinner2();
+        },
+        geoOptions
+      );
+    }
+
+    function stopSpinner2() {
+      if (refreshIcon2) {
+        refreshIcon2.classList.remove('animate-spin');
+      }
+      if (btnRefreshGps2) {
+        btnRefreshGps2.disabled = false;
+      }
+    }
+
+    function showGPSError2() {
+      gpsErrorPanel2.classList.remove('hidden');
+      if (distanceMeters2.textContent === "—" || distanceMeters2.textContent.includes('Calculare')) {
+        distanceMeters2.textContent = "—";
+      }
+    }
+
+    // 6. Target Reached Handler for Mission 1
     function handleTargetReached() {
-      // Ascunde textul cu distanța și imaginea
+      // Hide standard displays
       destinationImageContainer.classList.add('hidden');
       distancePanel.classList.add('hidden');
       gpsErrorPanel.classList.add('hidden');
 
-      // Fă telefonul să vibreze scurt
+      // Vibrate if supported
+      triggerHapticVibration();
+
+      // Reveal unlock action button panel
+      clueUnlockedPanel.classList.remove('hidden');
+    }
+
+    // Target Reached Handler for Mission 2
+    function handleTarget2Reached() {
+      triggerHapticVibration();
+      
+      // We set remaining distance meters visual placeholder to 0 for pristine client feedback
+      distanceMeters2.textContent = "0";
+    }
+
+    function triggerHapticVibration() {
       if (navigator.vibrate) {
         try {
           navigator.vibrate([200, 100, 200]);
         } catch(e) {
-          console.log("Vibrate API request prevented by iframe sandboxing sandbox constraint: ", e);
+          console.log("Interactive haptic vibration locked inside browser shell environment.");
         }
       }
-
-      // Afișează panoul special cu butonul nou: "Deblochează Indiciul"
-      clueUnlockedPanel.classList.remove('hidden');
     }
 
-    // 7. Event listeners
+    // 7. Core Event listeners Configuration
     btnContinue.addEventListener('click', () => {
       userNameValue = inputUsername.value.trim();
 
-      // Reset feedback styling states
       errorBanner.classList.add('hidden');
       errorBanner.classList.remove('flex');
       
       if (!userNameValue) {
-        // Show validation error
         errorBanner.classList.remove('hidden');
         errorBanner.classList.add('flex');
         
@@ -547,14 +798,11 @@
         return;
       }
 
-      // Salvează numele utilizatorului în titlul misiunii
       missionUserName.textContent = userNameValue;
-      
-      // Lansează schimbarea fluidă de ecrane
       switchScreens();
     });
 
-    // Clear error dynamically when the explorer starts typing
+    // Clear error feedback dynamically when user starts editing
     inputUsername.addEventListener('input', () => {
       if (inputUsername.value.trim().length > 0) {
         errorBanner.classList.add('hidden');
@@ -562,19 +810,54 @@
       }
     });
 
-    // Bind manually triggered location check button
+    // Manual Refreshers clicks listeners
     if (btnRefreshGps) {
       btnRefreshGps.addEventListener('click', calculateManualDistance);
     }
+    if (btnRefreshGps2) {
+      btnRefreshGps2.addEventListener('click', calculateManualDistance2);
+    }
 
-    // Deblochează Indiciul alert trigger
-    btnUnlockClue.addEventListener('click', () => {
-      alert("Pregătit pentru Pasul 3");
+    // Transitional trigger to launch Step 3 (Misiunea 2)
+    btnUnlockClue.addEventListener('click', switchScreensToMission2);
+
+    // Verify Clue Input submission validation check
+    btnVerifyClue.addEventListener('click', () => {
+      const codeValue = buildingNumberInput.value.trim();
+      clueErrorBanner.classList.add('hidden');
+
+      if (codeValue === "82") {
+        // Hide validator mechanics
+        buildingNumberInput.disabled = true;
+        buildingNumberInput.parentElement.classList.add('opacity-50', 'pointer-events-none');
+        btnVerifyClue.classList.add('hidden');
+        
+        // Show successful decodation banner
+        clueSuccessBanner.classList.remove('hidden');
+      } else {
+        // Show validation incorrect warning text
+        clueErrorBanner.classList.remove('hidden');
+        clueErrorBanner.classList.add('flex');
+      }
     });
 
-    // Simulare directă a sosirii (Foarte util pentru testarea pe desktop/simulator)
+    // Dismiss code input error dynamically on user editing
+    buildingNumberInput.addEventListener('input', () => {
+      clueErrorBanner.classList.add('hidden');
+      clueErrorBanner.classList.remove('flex');
+    });
+
+    // Final Next Mission Step trigger
+    btnNextMission.addEventListener('click', () => {
+      alert("Pregătit pentru Pasul 4");
+    });
+
+    // Simulations controls
     btnSimulateGps.addEventListener('click', () => {
       handleTargetReached();
+    });
+    btnSimulateGps2.addEventListener('click', () => {
+      handleTarget2Reached();
     });
   </script>
 </body>
