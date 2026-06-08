@@ -780,8 +780,8 @@
               type="button"
               class="w-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 hover:from-emerald-600 text-white font-display font-semibold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-2"
             >
-              <span>Finalizează Misiunea</span>
-              <i data-lucide="award" class="w-4 h-4"></i>
+              <span>Mergi la Misiunea 5</span>
+              <i data-lucide="compass" class="w-4 h-4"></i>
             </button>
           </div>
 
@@ -802,6 +802,170 @@
             <span class="font-bold font-display text-amber-300/90 text-xs">Senzorul are nevoie de locație</span>
             <p class="text-autumn-400 leading-relaxed text-[11px]">
               Activează permisiunea GPS pe telefon sau utilizează simularile noastre de mediu.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= ECRANUL 4.8: Misiunea 5 - Active Mission Screen 5 (Hidden Initially) ================= -->
+    <div id="mission5-screen" class="hidden opacity-0 transform scale-95 transition-all duration-500 space-y-6">
+      
+      <!-- Explorer Welcome Title -->
+      <div class="text-center space-y-3">
+        <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
+          Misiunea #5 • Potolire și Reîncărcare
+        </div>
+        
+        <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
+          Urmează Busola spre Răsplată
+        </h2>
+        
+        <p class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
+          Ai coborât la Grigorescu. Acum urmează busola către faimosul popas final de reîncărcare.
+        </p>
+      </div>
+
+      <!-- Main Mission Clue and Distance Card -->
+      <div class="bg-gradient-to-b from-cozy-card to-cozy-card/90 border border-cozy-border rounded-2xl p-5 shadow-xl shadow-black/40 space-y-5 backdrop-blur-md relative overflow-hidden">
+        <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent"></div>
+
+        <!-- Manual Distance Tracker & Compass Grid for Mission 5 -->
+        <div id="distance-panel5" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
+          
+          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
+            <span class="relative flex h-2 w-2">
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            Senzor GPS Real-Time cu Busolă
+          </div>
+
+          <!-- Compass Dial Indicator Interface element -->
+          <div id="compass-direction-container5" class="flex flex-col items-center justify-center py-2">
+            <div class="relative w-24 h-24 rounded-full border-2 border-amber-500/35 bg-cozy-input/80 flex items-center justify-center shadow-lg shadow-black/30">
+              
+              <!-- Static Compass rose references for North/South/East/West -->
+              <span class="absolute top-1 text-[9px] font-mono font-bold text-amber-400/80">N</span>
+              <span class="absolute bottom-1 text-[9px] font-mono font-bold text-autumn-500/80">S</span>
+              <span class="absolute left-1.5 text-[9px] font-mono font-bold text-autumn-500/85">W</span>
+              <span class="absolute right-1.5 text-[9px] font-mono font-bold text-autumn-500/85">E</span>
+
+              <!-- Rotește indicatorul busolei dinamic în timp real -->
+              <div id="compass-needle5" class="absolute w-full h-full transition-transform duration-300 ease-out flex items-center justify-center" style="transform: rotate(0deg);">
+                <!-- NEEDLE: pointing to destination coordinates -->
+                <div class="w-1.5 h-12 bg-gradient-to-t from-autumn-700 via-amber-500 to-amber-300 rounded-full relative" style="transform: translateY(-12px);"></div>
+                <div class="absolute w-2 h-2 rounded-full bg-amber-200"></div>
+              </div>
+
+            </div>
+            <p id="compass-angle-text5" class="text-[10px] text-autumn-400 font-mono mt-2 tracking-wider">Direcție: —°</p>
+            
+            <!-- Dynamic Simulator Slider for manual desktop/laptop testing -->
+            <div class="w-full max-w-[150px] mx-auto pt-2 space-y-1">
+              <label for="compass-sim-slider5" class="text-[9px] text-autumn-500 font-mono block">Rotire manuală (Simulare Desktop):</label>
+              <input 
+                type="range" 
+                id="compass-sim-slider5" 
+                min="0" 
+                max="360" 
+                value="0" 
+                class="w-full h-1.5 bg-cozy-dark/80 rounded-lg appearance-none cursor-pointer accent-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+              />
+            </div>
+          </div>
+          
+          <div class="space-y-1">
+            <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
+              Ești la <span id="distance-meters5">—</span> metri distanță
+            </p>
+            <p id="distance-helper-text5" class="text-[11px] text-autumn-500">apasă pe buton pentru a recalcula distanța</p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <button 
+              id="btn-refresh-gps5"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon5"></i>
+              <span id="refresh-btn-text5">Verifică Distanța / Refresh</span>
+            </button>
+
+            <!-- Tester simulation helper -->
+            <button 
+              id="btn-simulate-gps5"
+              type="button"
+              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+            >
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
+              Simulează Sosirea (&lt;5m)
+            </button>
+          </div>
+        </div>
+
+        <!-- Yes/No Question and final choices for Mission 5 (Initially hidden, revealed on arrival, hides GPS & compass) -->
+        <div id="validation-panel5" class="hidden space-y-4 pt-4">
+          
+          <!-- Riddle Introduction box -->
+          <div class="bg-gradient-to-br from-amber-500/10 to-cozy-dark border border-amber-500/20 rounded-xl p-4 text-center space-y-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-amber-500/15 flex items-center justify-center mx-auto text-amber-400 border border-amber-500/30 animate-pulse">
+              <i data-lucide="beer" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display font-bold text-amber-300 text-lg">Destinație Atinsă!</h3>
+            <p class="font-display font-bold text-amber-100 text-base py-1.5 leading-snug">
+              Și? Acum mâncăm un mic și bem o bere?
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <button 
+              id="btn-mic-bere-yes" 
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-display font-semibold py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Daaaa! 🍻 Normal! 🌭</span>
+            </button>
+
+            <button 
+              id="btn-mic-bere-of-course" 
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 via-amber-500 to-autumn-500 hover:from-amber-500 hover:to-autumn-400 text-white font-display font-semibold py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Doar mici cu muștar și bere rece! 🍺✨</span>
+            </button>
+          </div>
+
+          <!-- Success ultimate screen trigger -->
+          <div 
+            id="mic-bere-success-banner" 
+            class="hidden bg-emerald-950/80 border border-emerald-800/40 rounded-xl p-4 text-center space-y-3 text-xs text-emerald-200 animate-fade-in-up"
+          >
+            <div class="flex items-center justify-center gap-1.5 text-emerald-400 font-semibold font-display text-sm">
+              <i data-lucide="party-popper" class="w-4.5 h-4.5"></i>
+              <span>Poftă mare de tot! 🍻🔥</span>
+            </div>
+            
+            <button 
+              id="btn-finish-adventure5" 
+              type="button"
+              class="w-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 hover:from-emerald-600 text-white font-display font-semibold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+            >
+              <span>Finalizează Aventura</span>
+              <i data-lucide="award" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- GPS Request/Error Warning panel for Mission 5 (Initially hidden) -->
+        <div id="gps-error-panel5" class="hidden bg-autumn-950/80 border border-autumn-800/40 rounded-xl p-3.5 text-xs text-autumn-200 flex items-start gap-2.5 animate-fade-in-up">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-autumn-500 shrink-0 mt-0.5"></i>
+          <div class="space-y-1 text-left">
+            <span class="font-bold font-display text-amber-300/90 text-xs">Senzorul are nevoie de locație</span>
+            <p class="text-autumn-400 leading-relaxed text-[11px]">
+              Activează permisiunea GPS pe telefon pentru a urmări distanța.
             </p>
           </div>
         </div>
@@ -911,7 +1075,7 @@
 
     createFallingLeaves();
 
-    // 2. Coordonate Țintă - Pasul 2, Pasul 3, Pasul 4 (Misiunea 3) & Pasul 5 (Misiunea 4)
+    // 2. Coordonate Țintă - Pasul 2, Pasul 3, Pasul 4 (Misiunea 3) & Pasul 5 (Misiunea 4), Pasul 6 (Misiunea 5)
     const TARGET_LAT = 44.41366563568896;
     const TARGET_LNG = 26.178631158547372;
 
@@ -924,12 +1088,17 @@
     const TARGET4_LAT = 44.411107;
     const TARGET4_LNG = 26.173165;
 
+    const TARGET5_LAT = 44.411972;
+    const TARGET5_LNG = 26.178385;
+
     let userNameValue = "";
 
-    // Active tracking and compass state variables for Mission 4
+    // Active tracking and compass state variables for Mission 4 & 5
     let currentHeading = 0;
     let currentBearing = 0;
     let mission4WatchId = null;
+    let mission5WatchId = null;
+    let activeMission = 4;
 
     // DOM References
     const btnContinue = document.getElementById('btn-continue');
@@ -1002,6 +1171,22 @@
     const btnVerifyStairs = document.getElementById('btn-verify-stairs');
     const btnFinishAdventure = document.getElementById('btn-finish-adventure');
 
+    // Mission 5 UI Elements
+    const mission5Screen = document.getElementById('mission5-screen');
+    const distanceMeters5 = document.getElementById('distance-meters5');
+    const btnRefreshGps5 = document.getElementById('btn-refresh-gps5');
+    const refreshIcon5 = document.getElementById('refresh-icon5');
+    const btnSimulateGps5 = document.getElementById('btn-simulate-gps5');
+    const gpsErrorPanel5 = document.getElementById('gps-error-panel5');
+    const distancePanel5 = document.getElementById('distance-panel5');
+    const compassNeedle5 = document.getElementById('compass-needle5');
+    const compassAngleText5 = document.getElementById('compass-angle-text5');
+    const validationPanel5 = document.getElementById('validation-panel5');
+    const btnMicBereYes = document.getElementById('btn-mic-bere-yes');
+    const btnMicBereOfCourse = document.getElementById('btn-mic-bere-of-course');
+    const micBereSuccessBanner = document.getElementById('mic-bere-success-banner');
+    const btnFinishAdventure5 = document.getElementById('btn-finish-adventure5');
+
     // Finish View Elements
     const finalUserName = document.getElementById('final-user-name');
     const finalStatsName = document.getElementById('final-stats-name');
@@ -1036,11 +1221,13 @@
     function updateCompassNeedle() {
       // Rotate needle relative to user's heading: rotation = (bearing - heading)
       const needleRotation = (currentBearing - currentHeading + 360) % 360;
-      if (compassNeedle) {
-        compassNeedle.style.transform = `rotate(${needleRotation}deg)`;
+      const targetNeedle = (activeMission === 5) ? compassNeedle5 : compassNeedle;
+      const targetAngleText = (activeMission === 5) ? compassAngleText5 : compassAngleText;
+      if (targetNeedle) {
+        targetNeedle.style.transform = `rotate(${needleRotation}deg)`;
       }
-      if (compassAngleText) {
-        compassAngleText.innerHTML = `Direcție: <span class="font-bold text-amber-300 font-mono text-[11px]">${Math.round(needleRotation)}°</span> <span class="text-autumn-450 text-[8px] tracking-wider block sm:inline sm:ml-1">(Țintă: ${Math.round(currentBearing)}° | Busolă: ${Math.round(currentHeading)}°)</span>`;
+      if (targetAngleText) {
+        targetAngleText.innerHTML = `Direcție: <span class="font-bold text-amber-300 font-mono text-[11px]">${Math.round(needleRotation)}°</span> <span class="text-autumn-450 text-[8px] tracking-wider block sm:inline sm:ml-1">(Țintă: ${Math.round(currentBearing)}° | Busolă: ${Math.round(currentHeading)}°)</span>`;
       }
     }
 
@@ -1169,13 +1356,36 @@
       }, 450);
     }
 
-    // Activare Ecran Final
-    function switchScreensToFinish() {
+    // Activare Ecran 4.8 (Misiunea 5)
+    function switchScreensToMission5() {
+      activeMission = 5;
       // Fade out mission screen 4
       mission4Screen.classList.add('opacity-0', 'scale-95');
       
       setTimeout(() => {
         mission4Screen.classList.add('hidden');
+        
+        // Show mission screen 5
+        mission5Screen.classList.remove('hidden');
+        missionBadge.textContent = "Bucharest • Misiunea 5";
+        
+        setTimeout(() => {
+          mission5Screen.classList.remove('opacity-0', 'scale-95');
+          mission5Screen.classList.add('opacity-100', 'scale-100');
+        }, 30);
+
+        // Perform initial calculation for Mission 5 Target
+        calculateManualDistance5();
+      }, 450);
+    }
+
+    // Activare Ecran Final
+    function switchScreensToFinish() {
+      // Fade out mission screen 5
+      mission5Screen.classList.add('opacity-0', 'scale-95');
+      
+      setTimeout(() => {
+        mission5Screen.classList.add('hidden');
         
         // Show finish screen
         finishScreen.classList.remove('hidden');
@@ -1496,6 +1706,121 @@
       }
     }
 
+    // 5 e. GPS Location Check for Mission 5 with Continuous watchPosition and Real-Time Compass orientation
+    function calculateManualDistance5() {
+      // 1. Solicit iOS or Android orientation sensors permission on active click
+      enableCompassSensors();
+
+      if (!navigator.geolocation) {
+        showGPSError5();
+        return;
+      }
+
+      if (refreshIcon5) {
+        refreshIcon5.classList.add('animate-spin');
+      }
+      if (btnRefreshGps5) {
+        btnRefreshGps5.disabled = true;
+      }
+
+      // If already watching, let's clear the old watch ID and start fresh
+      if (mission5WatchId !== null) {
+        navigator.geolocation.clearWatch(mission5WatchId);
+        mission5WatchId = null;
+      }
+
+      const geoOptions = {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 10000
+      };
+
+      // Watch position continuously instead of a single query to update the compass matching user footsteps!
+      mission5WatchId = navigator.geolocation.watchPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          
+          const distance = getHaversineDistance(lat, lng, TARGET5_LAT, TARGET5_LNG);
+          const roundedDistance = Math.round(distance);
+          
+          // Calculate destination target bearing and rotate live compass needle
+          currentBearing = getBearing(lat, lng, TARGET5_LAT, TARGET5_LNG);
+          updateCompassNeedle();
+          
+          if (distanceMeters5) {
+            distanceMeters5.textContent = roundedDistance;
+          }
+          
+          if (gpsErrorPanel5) {
+            gpsErrorPanel5.classList.add('hidden');
+          }
+
+          stopSpinner5();
+
+          // Under 5 meters triggers the question successfully
+          if (roundedDistance <= 5) {
+            // Clean up watcher to avoid excess battery utilization
+            if (mission5WatchId !== null) {
+              navigator.geolocation.clearWatch(mission5WatchId);
+              mission5WatchId = null;
+            }
+            handleTarget5Reached();
+          }
+        },
+        (error) => {
+          console.warn("GPS lookup M5 real-time tracking error: ", error.message);
+          showGPSError5();
+          stopSpinner5();
+        },
+        geoOptions
+      );
+
+      // Simple absolute coordinate fallback check immediately to avoid delay
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const distance = getHaversineDistance(lat, lng, TARGET5_LAT, TARGET5_LNG);
+          const roundedDistance = Math.round(distance);
+          
+          currentBearing = getBearing(lat, lng, TARGET5_LAT, TARGET5_LNG);
+          updateCompassNeedle();
+          
+          if (distanceMeters5) {
+            distanceMeters5.textContent = roundedDistance;
+          }
+          if (roundedDistance <= 5) {
+            if (mission5WatchId !== null) {
+              navigator.geolocation.clearWatch(mission5WatchId);
+              mission5WatchId = null;
+            }
+            handleTarget5Reached();
+          }
+        },
+        null,
+        { enableHighAccuracy: true, timeout: 4000 }
+      );
+    }
+
+    function stopSpinner5() {
+      if (refreshIcon5) {
+        refreshIcon5.classList.remove('animate-spin');
+      }
+      if (btnRefreshGps5) {
+        btnRefreshGps5.disabled = false;
+      }
+    }
+
+    function showGPSError5() {
+      if (gpsErrorPanel5) {
+        gpsErrorPanel5.classList.remove('hidden');
+      }
+      if (distanceMeters5 && (distanceMeters5.textContent === "—" || distanceMeters5.textContent.includes('Calculare'))) {
+        distanceMeters5.textContent = "—";
+      }
+    }
+
 
     // 6. Target Reached Handler for Mission 1
     function handleTargetReached() {
@@ -1582,6 +1907,35 @@
       }
     }
 
+    // Target Reached Handler for Mission 5
+    function handleTarget5Reached() {
+      triggerHapticVibration();
+      
+      // We set remaining distance meters visual placeholder to 0 for pristine client feedback
+      if (distanceMeters5) {
+        distanceMeters5.textContent = "0";
+      }
+
+      // Hide GPS displays & compass
+      if (distancePanel5) {
+        distancePanel5.classList.add('hidden');
+      }
+      if (gpsErrorPanel5) {
+        gpsErrorPanel5.classList.add('hidden');
+      }
+
+      // Reveal clue validation section smoothly when within precision range
+      if (validationPanel5) {
+        validationPanel5.classList.remove('hidden');
+        validationPanel5.classList.add('animate-fade-in-up');
+      }
+      
+      // Initial setup for new elements inside the panel (in case Lucide needs render)
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
     function triggerHapticVibration() {
       if (navigator.vibrate) {
         try {
@@ -1635,6 +1989,9 @@
     }
     if (btnRefreshGps4) {
       btnRefreshGps4.addEventListener('click', calculateManualDistance4);
+    }
+    if (btnRefreshGps5) {
+      btnRefreshGps5.addEventListener('click', calculateManualDistance5);
     }
 
     // Transitional trigger to launch Step 3 (Misiunea 2)
@@ -1729,15 +2086,43 @@
       stairsErrorBanner.classList.remove('flex');
     });
 
-    // Mission 4 Finish Adventure
+    // Mission 4 Finish Adventure (transitions to Mission 5 instead of finishing)
     btnFinishAdventure.addEventListener('click', () => {
-      // Clean up watch position tracker on finish
+      // Clean up watch position tracker on transition
       if (mission4WatchId !== null) {
         navigator.geolocation.clearWatch(mission4WatchId);
         mission4WatchId = null;
       }
-      switchScreensToFinish();
+      switchScreensToMission5();
     });
+
+    // Mission 5 Choice validations
+    if (btnMicBereYes) {
+      btnMicBereYes.addEventListener('click', () => {
+        btnMicBereYes.classList.add('hidden');
+        btnMicBereOfCourse.classList.add('hidden');
+        micBereSuccessBanner.classList.remove('hidden');
+      });
+    }
+
+    if (btnMicBereOfCourse) {
+      btnMicBereOfCourse.addEventListener('click', () => {
+        btnMicBereYes.classList.add('hidden');
+        btnMicBereOfCourse.classList.add('hidden');
+        micBereSuccessBanner.classList.remove('hidden');
+      });
+    }
+
+    // Mission 5 Final Transition to Success Ending Screen
+    if (btnFinishAdventure5) {
+      btnFinishAdventure5.addEventListener('click', () => {
+        if (mission5WatchId !== null) {
+          navigator.geolocation.clearWatch(mission5WatchId);
+          mission5WatchId = null;
+        }
+        switchScreensToFinish();
+      });
+    }
 
     // Desktop slider listener to simulate rotating holding orientation direction
     const compassSimSlider = document.getElementById('compass-sim-slider');
@@ -1748,15 +2133,27 @@
       });
     }
 
+    const compassSimSlider5 = document.getElementById('compass-sim-slider5');
+    if (compassSimSlider5) {
+      compassSimSlider5.addEventListener('input', (e) => {
+        currentHeading = parseInt(e.target.value, 10);
+        updateCompassNeedle();
+      });
+    }
+
     // Restart Adventure Step
     btnRestartAdventure.addEventListener('click', () => {
       // Fade out finish screen
       finishScreen.classList.add('opacity-0', 'scale-95');
       
-      // Clean up watch position tracker if running
+      // Clean up watch position trackers if running
       if (mission4WatchId !== null) {
         navigator.geolocation.clearWatch(mission4WatchId);
         mission4WatchId = null;
+      }
+      if (mission5WatchId !== null) {
+        navigator.geolocation.clearWatch(mission5WatchId);
+        mission5WatchId = null;
       }
 
       setTimeout(() => {
@@ -1782,6 +2179,23 @@
         stairsSuccessBanner.classList.add('hidden');
         btnVerifyStairs.classList.remove('hidden');
 
+        // Reset Mission 5 states
+        if (validationPanel5) {
+          validationPanel5.classList.add('hidden');
+        }
+        if (distancePanel5) {
+          distancePanel5.classList.remove('hidden');
+        }
+        if (btnMicBereYes) {
+          btnMicBereYes.classList.remove('hidden');
+        }
+        if (btnMicBereOfCourse) {
+          btnMicBereOfCourse.classList.remove('hidden');
+        }
+        if (micBereSuccessBanner) {
+          micBereSuccessBanner.classList.add('hidden');
+        }
+
         // Restore GPS Panels and Images
         destinationImageContainer.classList.remove('hidden');
         distancePanel.classList.remove('hidden');
@@ -1800,13 +2214,22 @@
         if (compassSimSlider) {
           compassSimSlider.value = 0;
         }
+        if (compassSimSlider5) {
+          compassSimSlider5.value = 0;
+        }
         currentHeading = 0;
         currentBearing = 0;
         if (compassNeedle) {
           compassNeedle.style.transform = "rotate(0deg)";
         }
+        if (compassNeedle5) {
+          compassNeedle5.style.transform = "rotate(0deg)";
+        }
         if (compassAngleText) {
           compassAngleText.textContent = "Direcție: —°";
+        }
+        if (compassAngleText5) {
+          compassAngleText5.textContent = "Direcție: —°";
         }
 
         // Restore distance text placeholders
@@ -1814,7 +2237,9 @@
         distanceMeters2.textContent = "—";
         distanceMeters3.textContent = "—";
         distanceMeters4.textContent = "—";
+        distanceMeters5.textContent = "—";
         
+        activeMission = 4;
         missionBadge.textContent = "Bucharest • Misiunea 1";
 
         // Show start screen
@@ -1827,18 +2252,33 @@
     });
 
     // Simulations controls
-    btnSimulateGps.addEventListener('click', () => {
-      handleTargetReached();
-    });
-    btnSimulateGps2.addEventListener('click', () => {
-      handleTarget2Reached();
-    });
-    btnSimulateGps3.addEventListener('click', () => {
-      handleTarget3Reached();
-    });
-    btnSimulateGps4.addEventListener('click', () => {
-      handleTarget4Reached();
-    });
+    if (btnSimulateGps) {
+      btnSimulateGps.addEventListener('click', () => {
+        handleTargetReached();
+      });
+    }
+    if (btnSimulateGps2) {
+      btnSimulateGps2.addEventListener('click', () => {
+        handleTarget2Reached();
+      });
+    }
+    if (btnSimulateGps3) {
+      btnSimulateGps3.addEventListener('click', () => {
+        handleTarget3Reached();
+      });
+    }
+    if (btnSimulateGps4) {
+      btnSimulateGps4.addEventListener('click', () => {
+        handleTarget4Reached();
+      });
+    }
+    if (btnSimulateGps5) {
+      btnSimulateGps5.addEventListener('click', () => {
+        handleTarget5Reached();
+      });
+    }
+
+
   </script>
 </body>
 </html>
