@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Urban Hunter - București Treasure Hunt</title>
   
-  <!-- Google Fonts for Editorial Elegance and Tech Modernity -->
+  <!-- Gorgeous 2026 Future Dusk Typography - Plus Jakarta Sans & Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Icons via Lucide Content Delivery Network -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -21,42 +21,42 @@
         extend: {
           colors: {
             autumn: {
-              50: '#fdf8f5',
-              100: '#fbeee6',
-              200: '#f5dbcf',
-              300: '#ebbeac',
-              400: '#db997f',
-              500: '#cb7152',
-              600: '#bd583b',
-              700: '#9d4229',
-              800: '#813624',
-              900: '#682e20',
-              950: '#38140d',
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6', // bright cyber teal
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
             },
             amber: {
-              50: '#fffbeb',
-              100: '#fef3c7',
-              200: '#fde68a',
-              300: '#fcd34d',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-              700: '#b45309',
-              800: '#92400e',
-              900: '#78350f',
-              950: '#451a03',
+              50: '#faf5ff',
+              100: '#f3e8ff',
+              200: '#e9d5ff',
+              300: '#d8b4fe',
+              400: '#c084fc',
+              500: '#a855f7', // electric violet / lavender
+              600: '#9333ea',
+              700: '#7e22ce',
+              800: '#6b21a8',
+              900: '#581c87',
+              950: '#3b0764',
             },
             cozy: {
-              dark: '#1c120c',
-              card: '#2c1e15',
-              border: '#453226',
-              input: '#342318'
+              dark: '#080410',     // 2026 Midnight Future Dusk base
+              card: '#110925',     // deep neon twilight indigo cards
+              border: '#251545',   // techno border violet
+              input: '#170d32'     // inputs
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-            serif: ['Playfair Display', 'serif']
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+            serif: ['"Plus Jakarta Sans"', 'sans-serif']
           }
         }
       }
@@ -162,12 +162,8 @@
           Urban Hunter
         </h1>
         
-        <p class="font-serif text-lg text-autumn-200/90 italic">
-          Misterele Bucureștiului de altădată
-        </p>
-        
-        <p class="text-xs text-autumn-400/80 max-w-xs mx-auto leading-relaxed px-2">
-          Pornește într-o expediție urbană unică. Descoperă comorile ascunse printre străzile vechi și poveștile uitate ale capitalei.
+        <p class="font-display text-xl sm:text-2xl font-bold text-amber-300 tracking-wide max-w-xs mx-auto leading-snug">
+          Esti din sectorul 3? De pula sa ma iei
         </p>
       </div>
 
@@ -225,12 +221,8 @@
         </div>
         
         <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
-          Salut, <span id="mission-user-name" class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-autumn-400 font-bold">Exploratorule</span>!
+          Prima Destinație<span id="mission-user-name" class="hidden"></span>
         </h2>
-        
-        <p class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
-          Uite prima ta destinație. Nu te grăbi, aplicația știe când ai ajuns.
-        </p>
       </div>
 
       <!-- Main Mission Clue and Distance Card -->
@@ -287,7 +279,7 @@
               class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
-              Simulează Sosirea (&lt;15m)
+              Simulează Sosirea (&lt;5m)
             </button>
           </div>
         </div>
@@ -384,7 +376,7 @@
               class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
-              Simulează Sosirea (&lt;15m)
+              Simulează Sosirea (&lt;5m)
             </button>
           </div>
         </div>
@@ -397,15 +389,21 @@
             <div class="w-10 h-10 rounded-full bg-amber-550/15 flex items-center justify-center mx-auto text-amber-400 border border-amber-500/30">
               <i data-lucide="sparkles" class="w-5 h-5 animate-pulse"></i>
             </div>
-            <h3 class="font-display font-medium text-amber-300 text-sm">Destinație Atinsă! Indiciul Nou</h3>
+            <h3 class="font-display font-medium text-amber-300 text-sm">Destinație Atinsă! Ghicitoarea</h3>
             <p class="text-xs text-autumn-300 leading-relaxed max-w-xs mx-auto">
-              Ai găsit locul ghidat de instinct! Acum, caută numărul de pe clădire. Gândește-te bine: <span class="text-amber-400 font-medium">este un număr pe care toți oamenii îl pronunță cu glas tare cel puțin o dată pe an</span> (la aniversare, când își sărbătoresc trecerea timpului!). Găsește-l pe clădire și validează-l.
+              Te afli în fața templului învățăturii de pe vremuri. Pentru a debloca calea, dezleagă misterul cifrelor:
+            </p>
+            <p class="font-display font-bold text-amber-300 text-sm py-1.5 leading-snug">
+              Care este numărul obținut dacă aduni opt zeci cu numărul de picioare ale unui om?
+            </p>
+            <p class="text-[11px] text-autumn-400 leading-relaxed max-w-xs mx-auto">
+              Scrie acest număr al elevilor isteți pentru a putea continua aventura!
             </p>
           </div>
 
           <div>
             <label for="building-number" class="block text-xs font-semibold uppercase tracking-widest text-autumn-300 text-center mb-2">
-              Numărul clădirii descoperite
+              Răspunsul tău la Ghicitoare
             </label>
             
             <div class="relative max-w-[210px] mx-auto">
@@ -533,7 +531,7 @@
               class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
-              Simulează Sosirea (&lt;15m)
+              Simulează Sosirea (&lt;5m)
             </button>
           </div>
         </div>
@@ -718,7 +716,7 @@
               class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
-              Simulează Sosirea (&lt;20m)
+              Simulează Sosirea (&lt;5m)
             </button>
           </div>
         </div>
@@ -1227,7 +1225,7 @@
 
           stopSpinner();
 
-          if (roundedDistance <= 15) {
+          if (roundedDistance <= 5) {
             handleTargetReached();
           }
         },
@@ -1290,7 +1288,7 @@
 
           stopSpinner2();
 
-          if (roundedDistance <= 15) {
+          if (roundedDistance <= 5) {
             handleTarget2Reached();
           }
         },
@@ -1355,7 +1353,7 @@
 
           stopSpinner3();
 
-          if (roundedDistance <= 15) {
+          if (roundedDistance <= 5) {
             handleTarget3Reached();
           }
         },
@@ -1439,8 +1437,8 @@
 
           stopSpinner4();
 
-          // Under 20 meters triggers the puzzle successfully
-          if (roundedDistance <= 20) {
+          // Under 5 meters triggers the puzzle successfully
+          if (roundedDistance <= 5) {
             // Clean up watcher to avoid excess battery utilization
             if (mission4WatchId !== null) {
               navigator.geolocation.clearWatch(mission4WatchId);
@@ -1471,7 +1469,7 @@
           if (distanceMeters4) {
             distanceMeters4.textContent = roundedDistance;
           }
-          if (roundedDistance <= 20) {
+          if (roundedDistance <= 5) {
             handleTarget4Reached();
           }
         },
@@ -1709,8 +1707,8 @@
       const answerValue = stairsAnswerInput.value.trim();
       stairsErrorBanner.classList.add('hidden');
 
-      // Support both the original 20 correct stairs and the developer's 5 correct stairs choice
-      if (answerValue === "5" || answerValue === "20") {
+      // Validate correct number of stairs (20)
+      if (answerValue === "20") {
         // Hide validator mechanics
         stairsAnswerInput.disabled = true;
         stairsAnswerInput.parentElement.classList.add('opacity-50', 'pointer-events-none');
