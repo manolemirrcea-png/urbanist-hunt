@@ -1305,6 +1305,8 @@
     // Active tracking and compass state variables for Mission 4 & 5
     let currentHeading = 0;
     let currentBearing = 0;
+    let lastNeedleAngle = 0;
+    let lastNeedleAngle5 = 0;
     let mission4WatchId = null;
     let mission5WatchId = null;
     let activeMission = 4;
@@ -1457,7 +1459,27 @@
       const targetNeedle = (activeMission === 5) ? compassNeedle5 : compassNeedle;
       const targetAngleText = (activeMission === 5) ? compassAngleText5 : compassAngleText;
       if (targetNeedle) {
-        targetNeedle.style.transform = `rotate(${needleRotation}deg)`;
+        if (activeMission === 5) {
+          let currentNormalized = (lastNeedleAngle5 % 360 + 360) % 360;
+          let diff = needleRotation - currentNormalized;
+          if (diff > 180) {
+            diff -= 360;
+          } else if (diff < -180) {
+            diff += 360;
+          }
+          lastNeedleAngle5 += diff;
+          targetNeedle.style.transform = `rotate(${lastNeedleAngle5}deg)`;
+        } else {
+          let currentNormalized = (lastNeedleAngle % 360 + 360) % 360;
+          let diff = needleRotation - currentNormalized;
+          if (diff > 180) {
+            diff -= 360;
+          } else if (diff < -180) {
+            diff += 360;
+          }
+          lastNeedleAngle += diff;
+          targetNeedle.style.transform = `rotate(${lastNeedleAngle}deg)`;
+        }
       }
       if (targetAngleText) {
         targetAngleText.innerHTML = `Direcție: <span class="font-bold text-amber-300 font-mono text-[11px]">${Math.round(needleRotation)}°</span> <span class="text-autumn-450 text-[8px] tracking-wider block sm:inline sm:ml-1">(Țintă: ${Math.round(currentBearing)}° | Busolă: ${Math.round(currentHeading)}°)</span>`;
@@ -2627,6 +2649,8 @@
         }
         currentHeading = 0;
         currentBearing = 0;
+        lastNeedleAngle = 0;
+        lastNeedleAngle5 = 0;
         if (compassNeedle) {
           compassNeedle.style.transform = "rotate(0deg)";
         }
