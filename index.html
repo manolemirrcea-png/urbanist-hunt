@@ -347,28 +347,20 @@
         <div id="distance-panel" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
           <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
             <span class="relative flex h-2 w-2">
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-autumn-500"></span>
+              <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Localizare Manuală
+            Localizare Live / Real-Time
           </div>
           
           <div class="space-y-1">
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
               Ești la <span id="distance-meters">—</span> metri distanță
             </p>
-            <p id="distance-helper-text" class="text-[11px] text-autumn-500">apasă pe buton pentru a calcula distanța</p>
+            <p id="distance-helper-text" class="text-[11px] text-autumn-500 animate-pulse">Distanța se actualizează automat live</p>
           </div>
 
           <div class="flex flex-col gap-2">
-            <button 
-              id="btn-refresh-gps"
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon"></i>
-              <span id="refresh-btn-text">Verifică Distanța / Refresh</span>
-            </button>
-
             <!-- Hint Button M1 -->
             <button 
               id="btn-hint-1"
@@ -458,24 +450,22 @@
 
         <!-- Manual Distance Tracker Grid for Mission 2 -->
         <div id="distance-panel2" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
+          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Localizare Live / Real-Time
+          </div>
           
           <div class="space-y-1">
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
               Ești la <span id="distance-meters2">—</span> metri distanță
             </p>
-            <p id="distance-helper-text2" class="text-[11px] text-autumn-500">apasă pe buton pentru a recalcula distanța</p>
+            <p id="distance-helper-text2" class="text-[11px] text-autumn-500 animate-pulse">Distanța se actualizează automat live</p>
           </div>
 
           <div class="flex flex-col gap-2">
-            <button 
-              id="btn-refresh-gps2"
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon2"></i>
-              <span id="refresh-btn-text2">Verifică Distanța / Refresh</span>
-            </button>
-
             <!-- Hint Button M2 -->
             <button 
               id="btn-hint-2"
@@ -638,24 +628,22 @@
 
         <!-- Manual Distance Tracker Grid for Mission 3 -->
         <div id="distance-panel3" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
+          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Localizare Live / Real-Time
+          </div>
           
           <div class="space-y-1">
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
               Ești la <span id="distance-meters3">—</span> metri distanță
             </p>
-            <p id="distance-helper-text3" class="text-[11px] text-autumn-500">apasă pe buton pentru a recalcula distanța</p>
+            <p id="distance-helper-text3" class="text-[11px] text-autumn-500 animate-pulse">Distanța se actualizează automat live</p>
           </div>
 
           <div class="flex flex-col gap-2">
-            <button 
-              id="btn-refresh-gps3"
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon3"></i>
-              <span id="refresh-btn-text3">Verifică Distanța / Refresh</span>
-            </button>
-
             <!-- Hint Button M3 -->
             <button 
               id="btn-hint-3"
@@ -861,19 +849,10 @@
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
               Ești la <span id="distance-meters4">—</span> metri distanță
             </p>
-            <p id="distance-helper-text4" class="text-[11px] text-autumn-500">apasă pe buton pentru a recalcula distanța</p>
+            <p id="distance-helper-text4" class="text-[11px] text-autumn-500 animate-pulse">Distanța se actualizează automat live</p>
           </div>
 
           <div class="flex flex-col gap-2">
-            <button 
-              id="btn-refresh-gps4"
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon4"></i>
-              <span id="refresh-btn-text4">Verifică Distanța / Refresh</span>
-            </button>
-
             <!-- Hint Button M4 -->
             <button 
               id="btn-hint-4"
@@ -1063,19 +1042,10 @@
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
               Ești la <span id="distance-meters5">—</span> metri distanță
             </p>
-            <p id="distance-helper-text5" class="text-[11px] text-autumn-500">apasă pe buton pentru a recalcula distanța</p>
+            <p id="distance-helper-text5" class="text-[11px] text-autumn-500 animate-pulse">Distanța se actualizează automat live</p>
           </div>
 
           <div class="flex flex-col gap-2">
-            <button 
-              id="btn-refresh-gps5"
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-autumn-700 via-autumn-600 to-amber-600 hover:from-autumn-600 hover:to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <i data-lucide="refresh-cw" class="w-4 h-4 cursor-pointer" id="refresh-icon5"></i>
-              <span id="refresh-btn-text5">Verifică Distanța / Refresh</span>
-            </button>
-
             <!-- Hint Button M5 -->
             <button 
               id="btn-hint-5"
@@ -1307,6 +1277,9 @@
     let currentBearing = 0;
     let lastNeedleAngle = 0;
     let lastNeedleAngle5 = 0;
+    let mission1WatchId = null;
+    let mission2WatchId = null;
+    let mission3WatchId = null;
     let mission4WatchId = null;
     let mission5WatchId = null;
     let activeMission = 4;
@@ -1547,6 +1520,12 @@
 
     // Activare Ecran 3 (Misiunea 2)
     function switchScreensToMission2() {
+      // Clear previous watcher to prevent duplicate listeners
+      if (mission1WatchId !== null) {
+        navigator.geolocation.clearWatch(mission1WatchId);
+        mission1WatchId = null;
+      }
+
       // Fade out mission screen 1
       missionScreen.classList.add('opacity-0', 'scale-95');
       
@@ -1569,6 +1548,12 @@
 
     // Activare Ecran 4 (Misiunea 3)
     function switchScreensToMission3() {
+      // Clear previous watcher to prevent duplicate listeners
+      if (mission2WatchId !== null) {
+        navigator.geolocation.clearWatch(mission2WatchId);
+        mission2WatchId = null;
+      }
+
       // Fade out mission screen 2
       mission2Screen.classList.add('opacity-0', 'scale-95');
       
@@ -1595,6 +1580,12 @@
 
     // Activare Ecran 4.5 (Misiunea 4)
     function switchScreensToMission4() {
+      // Clear previous watcher to prevent duplicate listeners
+      if (mission3WatchId !== null) {
+        navigator.geolocation.clearWatch(mission3WatchId);
+        mission3WatchId = null;
+      }
+
       // Fade out mission screen 3
       mission3Screen.classList.add('opacity-0', 'scale-95');
       
@@ -1621,6 +1612,12 @@
 
     // Activare Ecran 4.8 (Misiunea 5)
     function switchScreensToMission5() {
+      // Clear previous watcher to prevent duplicate listeners
+      if (mission4WatchId !== null) {
+        navigator.geolocation.clearWatch(mission4WatchId);
+        mission4WatchId = null;
+      }
+
       activeMission = 5;
       // Fade out mission screen 4
       mission4Screen.classList.add('opacity-0', 'scale-95');
@@ -1648,6 +1645,12 @@
 
     // Activare Ecran Final
     function switchScreensToFinish() {
+      // Clear previous watcher to prevent duplicate listeners
+      if (mission5WatchId !== null) {
+        navigator.geolocation.clearWatch(mission5WatchId);
+        mission5WatchId = null;
+      }
+
       // Fade out mission screen 5
       mission5Screen.classList.add('opacity-0', 'scale-95');
       
@@ -1669,27 +1672,25 @@
       }, 450);
     }
 
-    // 5. GPS Location Check for Mission 1 (Manual Refresh)
+    // 5. GPS Location Check for Mission 1 (Continuous watchPosition)
     function calculateManualDistance() {
       if (!navigator.geolocation) {
         showGPSError();
         return;
       }
 
-      if (refreshIcon) {
-        refreshIcon.classList.add('animate-spin');
-      }
-      if (btnRefreshGps) {
-        btnRefreshGps.disabled = true;
+      if (mission1WatchId !== null) {
+        navigator.geolocation.clearWatch(mission1WatchId);
+        mission1WatchId = null;
       }
 
       const geoOptions = {
         enableHighAccuracy: true,
         maximumAge: 0,
-        timeout: 12000
+        timeout: 10000
       };
 
-      navigator.geolocation.getCurrentPosition(
+      mission1WatchId = navigator.geolocation.watchPosition(
         (position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
@@ -1697,62 +1698,80 @@
           const distance = getHaversineDistance(lat, lng, TARGET_LAT, TARGET_LNG);
           const roundedDistance = Math.round(distance);
           
-          distanceMeters.textContent = roundedDistance;
-          gpsErrorPanel.classList.add('hidden');
-
-          stopSpinner();
+          if (distanceMeters) {
+            distanceMeters.textContent = roundedDistance;
+          }
+          if (gpsErrorPanel) {
+            gpsErrorPanel.classList.add('hidden');
+          }
 
           if (roundedDistance <= 5) {
+            if (mission1WatchId !== null) {
+              navigator.geolocation.clearWatch(mission1WatchId);
+              mission1WatchId = null;
+            }
             handleTargetReached();
           }
         },
         (error) => {
-          console.warn("GPS lookup error: ", error.message);
+          console.warn("GPS lookup M1 live error: ", error.message);
           showGPSError();
-          stopSpinner();
         },
         geoOptions
       );
-    }
 
-    function stopSpinner() {
-      if (refreshIcon) {
-        refreshIcon.classList.remove('animate-spin');
-      }
-      if (btnRefreshGps) {
-        btnRefreshGps.disabled = false;
-      }
+      // Instant fallback query to populate coordinate immediately
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const distance = getHaversineDistance(lat, lng, TARGET_LAT, TARGET_LNG);
+          const roundedDistance = Math.round(distance);
+          if (distanceMeters) {
+            distanceMeters.textContent = roundedDistance;
+          }
+          if (roundedDistance <= 5) {
+            if (mission1WatchId !== null) {
+              navigator.geolocation.clearWatch(mission1WatchId);
+              mission1WatchId = null;
+            }
+            handleTargetReached();
+          }
+        },
+        null,
+        { enableHighAccuracy: true, timeout: 4000 }
+      );
     }
 
     function showGPSError() {
-      gpsErrorPanel.classList.remove('hidden');
-      if (distanceMeters.textContent === "—" || distanceMeters.textContent.includes('Calculare')) {
+      if (gpsErrorPanel) {
+        gpsErrorPanel.classList.remove('hidden');
+      }
+      if (distanceMeters && (distanceMeters.textContent === "—" || distanceMeters.textContent.includes('Calculare'))) {
         distanceMeters.textContent = "—";
       }
     }
 
 
-    // 5 b. GPS Location Check for Mission 2 (Manual Refresh)
+    // 5 b. GPS Location Check for Mission 2 (Continuous watchPosition)
     function calculateManualDistance2() {
       if (!navigator.geolocation) {
         showGPSError2();
         return;
       }
 
-      if (refreshIcon2) {
-        refreshIcon2.classList.add('animate-spin');
-      }
-      if (btnRefreshGps2) {
-        btnRefreshGps2.disabled = true;
+      if (mission2WatchId !== null) {
+        navigator.geolocation.clearWatch(mission2WatchId);
+        mission2WatchId = null;
       }
 
       const geoOptions = {
         enableHighAccuracy: true,
         maximumAge: 0,
-        timeout: 12000
+        timeout: 10000
       };
 
-      navigator.geolocation.getCurrentPosition(
+      mission2WatchId = navigator.geolocation.watchPosition(
         (position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
@@ -1760,62 +1779,80 @@
           const distance = getHaversineDistance(lat, lng, TARGET2_LAT, TARGET2_LNG);
           const roundedDistance = Math.round(distance);
           
-          distanceMeters2.textContent = roundedDistance;
-          gpsErrorPanel2.classList.add('hidden');
-
-          stopSpinner2();
+          if (distanceMeters2) {
+            distanceMeters2.textContent = roundedDistance;
+          }
+          if (gpsErrorPanel2) {
+            gpsErrorPanel2.classList.add('hidden');
+          }
 
           if (roundedDistance <= 5) {
+            if (mission2WatchId !== null) {
+              navigator.geolocation.clearWatch(mission2WatchId);
+              mission2WatchId = null;
+            }
             handleTarget2Reached();
           }
         },
         (error) => {
-          console.warn("GPS lookup M2 error: ", error.message);
+          console.warn("GPS lookup M2 live error: ", error.message);
           showGPSError2();
-          stopSpinner2();
         },
         geoOptions
       );
-    }
 
-    function stopSpinner2() {
-      if (refreshIcon2) {
-        refreshIcon2.classList.remove('animate-spin');
-      }
-      if (btnRefreshGps2) {
-        btnRefreshGps2.disabled = false;
-      }
+      // Instant fallback query to populate coordinate immediately
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const distance = getHaversineDistance(lat, lng, TARGET2_LAT, TARGET2_LNG);
+          const roundedDistance = Math.round(distance);
+          if (distanceMeters2) {
+            distanceMeters2.textContent = roundedDistance;
+          }
+          if (roundedDistance <= 5) {
+            if (mission2WatchId !== null) {
+              navigator.geolocation.clearWatch(mission2WatchId);
+              mission2WatchId = null;
+            }
+            handleTarget2Reached();
+          }
+        },
+        null,
+        { enableHighAccuracy: true, timeout: 4000 }
+      );
     }
 
     function showGPSError2() {
-      gpsErrorPanel2.classList.remove('hidden');
-      if (distanceMeters2.textContent === "—" || distanceMeters2.textContent.includes('Calculare')) {
+      if (gpsErrorPanel2) {
+        gpsErrorPanel2.classList.remove('hidden');
+      }
+      if (distanceMeters2 && (distanceMeters2.textContent === "—" || distanceMeters2.textContent.includes('Calculare'))) {
         distanceMeters2.textContent = "—";
       }
     }
 
 
-    // 5 c. GPS Location Check for Mission 3 (Manual Refresh)
+    // 5 c. GPS Location Check for Mission 3 (Continuous watchPosition)
     function calculateManualDistance3() {
       if (!navigator.geolocation) {
         showGPSError3();
         return;
       }
 
-      if (refreshIcon3) {
-        refreshIcon3.classList.add('animate-spin');
-      }
-      if (btnRefreshGps3) {
-        btnRefreshGps3.disabled = true;
+      if (mission3WatchId !== null) {
+        navigator.geolocation.clearWatch(mission3WatchId);
+        mission3WatchId = null;
       }
 
       const geoOptions = {
         enableHighAccuracy: true,
         maximumAge: 0,
-        timeout: 12000
+        timeout: 10000
       };
 
-      navigator.geolocation.getCurrentPosition(
+      mission3WatchId = navigator.geolocation.watchPosition(
         (position) => {
           const lat = position.coords.latitude;
           const lng = position.coords.longitude;
@@ -1823,33 +1860,49 @@
           const distance = getHaversineDistance(lat, lng, TARGET3_LAT, TARGET3_LNG);
           const roundedDistance = Math.round(distance);
           
-          distanceMeters3.textContent = roundedDistance;
+          if (distanceMeters3) {
+            distanceMeters3.textContent = roundedDistance;
+          }
           if (gpsErrorPanel3) {
             gpsErrorPanel3.classList.add('hidden');
           }
 
-          stopSpinner3();
-
           if (roundedDistance <= 5) {
+            if (mission3WatchId !== null) {
+              navigator.geolocation.clearWatch(mission3WatchId);
+              mission3WatchId = null;
+            }
             handleTarget3Reached();
           }
         },
         (error) => {
-          console.warn("GPS lookup M3 error: ", error.message);
+          console.warn("GPS lookup M3 live error: ", error.message);
           showGPSError3();
-          stopSpinner3();
         },
         geoOptions
       );
-    }
 
-    function stopSpinner3() {
-      if (refreshIcon3) {
-        refreshIcon3.classList.remove('animate-spin');
-      }
-      if (btnRefreshGps3) {
-        btnRefreshGps3.disabled = false;
-      }
+      // Instant fallback query to populate coordinate immediately
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const distance = getHaversineDistance(lat, lng, TARGET3_LAT, TARGET3_LNG);
+          const roundedDistance = Math.round(distance);
+          if (distanceMeters3) {
+            distanceMeters3.textContent = roundedDistance;
+          }
+          if (roundedDistance <= 5) {
+            if (mission3WatchId !== null) {
+              navigator.geolocation.clearWatch(mission3WatchId);
+              mission3WatchId = null;
+            }
+            handleTarget3Reached();
+          }
+        },
+        null,
+        { enableHighAccuracy: true, timeout: 4000 }
+      );
     }
 
     // GPS error handling fallback for Mission 3
@@ -2515,14 +2568,16 @@
       finishScreen.classList.add('opacity-0', 'scale-95');
       
       // Clean up watch position trackers if running
-      if (mission4WatchId !== null) {
-        navigator.geolocation.clearWatch(mission4WatchId);
-        mission4WatchId = null;
-      }
-      if (mission5WatchId !== null) {
-        navigator.geolocation.clearWatch(mission5WatchId);
-        mission5WatchId = null;
-      }
+      [mission1WatchId, mission2WatchId, mission3WatchId, mission4WatchId, mission5WatchId].forEach((w, idx) => {
+        if (w !== null) {
+          navigator.geolocation.clearWatch(w);
+        }
+      });
+      mission1WatchId = null;
+      mission2WatchId = null;
+      mission3WatchId = null;
+      mission4WatchId = null;
+      mission5WatchId = null;
 
       setTimeout(() => {
         finishScreen.classList.add('hidden');
