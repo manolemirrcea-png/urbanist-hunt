@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Urban Hunter - București Treasure Hunt</title>
+  <title>Maze - București Labyrinth Hunt</title>
   
   <!-- Gorgeous 2026 Future Dusk Typography - Plus Jakarta Sans & Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,36 +21,36 @@
         extend: {
           colors: {
             autumn: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              200: '#99f6e4',
-              300: '#5eead4',
-              400: '#2dd4bf',
-              500: '#14b8a6', // bright cyber teal
-              600: '#0d9488',
-              700: '#0f766e',
-              800: '#115e59',
-              900: '#134e4a',
-              950: '#042f2e',
+              50: '#ecfeff',
+              100: '#cffafe',
+              200: '#a5f3fc',
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#00ffff', // pure hyper-glowing digital cyan / cyber crystal
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75',
+              900: '#164e63',
+              950: '#083344',
             },
             amber: {
-              50: '#faf5ff',
-              100: '#f3e8ff',
-              200: '#e9d5ff',
-              300: '#d8b4fe',
-              400: '#c084fc',
-              500: '#a855f7', // electric violet / lavender
-              600: '#9333ea',
-              700: '#7e22ce',
-              800: '#6b21a8',
-              900: '#581c87',
-              950: '#3b0764',
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#ff007f', // premium cyber digital hot pink / rose magenta
+              600: '#db2777',
+              700: '#be185d',
+              800: '#9d174d',
+              900: '#881337',
+              950: '#4c0519',
             },
             cozy: {
-              dark: '#080410',     // 2026 Midnight Future Dusk base
-              card: '#110925',     // deep neon twilight indigo cards
-              border: '#251545',   // techno border violet
-              input: '#170d32'     // inputs
+              dark: '#030208',     // Absolute high-energy cyber dark digital canvas
+              card: '#0c081e',     // Glowing deep futuristic techno-panel room card
+              border: '#22164a',   // Electric laser violet / dark neon borders
+              input: '#100b28'     // Tech-panel deep inputs
             }
           },
           fontFamily: {
@@ -63,7 +63,7 @@
     }
   </script>
 
-    <style>
+  <style>
     /* Custom CSS animations and transitions */
     @keyframes fadeInUp {
       from {
@@ -120,62 +120,52 @@
       z-index: 1;
     }
 
-    /* 5-Second Interactive Intro Keyframes & Classes */
-    @keyframes scaleShrinkLogo {
-      0% {
-        opacity: 0;
-        transform: scale(2.8) translateY(90px);
-        filter: drop-shadow(0 0 30px rgba(20, 184, 166, 0.6));
+    /* Modern, highly-responsive and failure-resilient transition classes */
+    .transition-intro-element {
+      transition: opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1), transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Maze / Labyrinth immersive structural elements */
+    .maze-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 0, 127, 0.04) 1px, transparent 1px);
+    }
+    
+    .maze-glowing-glow {
+      box-shadow: 0 0 16px rgba(0, 255, 255, 0.2), inset 0 0 8px rgba(255, 0, 127, 0.15);
+    }
+
+    /* High voltage neon light up / flicker animation */
+    @keyframes neon-flicker-glow {
+      0%, 12%, 24%, 35% {
+        opacity: 0.1;
+        text-shadow: none;
+        color: rgba(255, 255, 255, 0.15);
+        transform: scale(0.98);
       }
-      25% {
+      4%, 16%, 28% {
+        opacity: 0.85;
+        text-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff, 0 0 30px #ff007f;
+        color: #e0f2fe;
+        transform: scale(1.02);
+      }
+      38% {
+        opacity: 0.35;
+        text-shadow: 0 0 3px #00ffff;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      44%, 100% {
         opacity: 1;
-        transform: scale(2.8) translateY(90px);
-        filter: drop-shadow(0 0 45px rgba(20, 184, 166, 0.8));
-      }
-      65% {
-        transform: scale(0.9) translateY(0px);
-        filter: drop-shadow(0 0 15px rgba(20, 184, 166, 0.3));
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0px);
-        filter: drop-shadow(0 0 0px rgba(20, 184, 166, 0));
+        text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 45px #00ffff, 0 0 70px #ff007f;
+        color: #ffffff;
+        transform: scale(1);
       }
     }
 
-    @keyframes introFadeSlideUp {
-      0% {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-intro-logo {
-      animation: scaleShrinkLogo 2.2s cubic-bezier(0.34, 1.3, 0.64, 1) forwards;
-    }
-
-    .animate-intro-text-1 {
-      opacity: 0;
-      animation: introFadeSlideUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
-    }
-
-    .animate-intro-text-2 {
-      opacity: 0;
-      animation: introFadeSlideUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
-    }
-
-    .animate-intro-text-3 {
-      opacity: 0;
-      animation: introFadeSlideUp 1.0s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards;
-    }
-
-    .animate-intro-card {
-      opacity: 0;
-      animation: introFadeSlideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.9s forwards;
+    .animate-neon-glow {
+      animation: neon-flicker-glow 2.5s ease-in-out forwards;
     }
   </style>
 </head>
@@ -184,21 +174,66 @@
   <!-- Aesthetic atmospheric overlay -->
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-autumn-900/30 via-cozy-dark to-cozy-dark pointer-events-none z-0"></div>
   <div class="absolute inset-0 pulse-glow bg-radial bg-autumn-600/5 mix-blend-color-dodge pointer-events-none z-0"></div>
+  <div class="absolute inset-0 maze-grid pointer-events-none z-0 opacity-40"></div>
   
   <!-- Falling Leaves Particle Layer -->
   <div id="leaves-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
-  <!-- Header Branding Spacer -->
-  <header class="w-full max-w-md mx-auto pt-8 px-6 flex justify-between items-center z-10 relative">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-autumn-500 to-amber-600 flex items-center justify-center shadow-lg shadow-autumn-900/50">
-        <i data-lucide="compass" class="w-5 h-5 text-amber-50 animate-pulse"></i>
+
+
+  <!-- ================= SPLASH INTRO SCREEN (Caterincă & Aprinde Lumina) ================= -->
+  <div id="splash-screen" class="fixed inset-0 bg-cozy-dark flex flex-col justify-center items-center z-[100] transition-all duration-700 ease-out cursor-pointer">
+    <!-- Ambient glowing fields -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cozy-card/95 via-cozy-dark to-cozy-dark opacity-95"></div>
+    <div class="absolute w-[280px] h-[280px] rounded-full bg-autumn-500/10 blur-3xl animate-pulse"></div>
+    
+    <div class="text-center relative z-10 px-6 max-w-sm space-y-8 animate-fade-in-up">
+      <!-- Big Icon / Logo -->
+      <div id="splash-logo-wrapper" class="relative inline-block mx-auto">
+        <div class="w-24 h-24 rounded-full border border-autumn-500/30 bg-cozy-card flex items-center justify-center relative shadow-[0_0_30px_rgba(0,255,255,0.25)]">
+          <!-- Custom High-End Cyber Labyrinth Map path visual -->
+          <svg class="w-14 h-14 text-autumn-500 relative z-10 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3h18v18H3z"/>
+            <path d="M21 9h-6v6"/>
+            <path d="M3 15h6V9h6"/>
+            <path d="M9 3v6"/>
+            <path d="M15 15v6"/>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor" class="animate-ping"/>
+          </svg>
+          <div class="absolute inset-0 rounded-full border-2 border-autumn-500/30 animate-pulse"></div>
+        </div>
       </div>
-      <span class="font-display font-medium text-sm tracking-wider text-amber-400 uppercase">Urban Hunter</span>
+      
+      <!-- App Name & Subtitle -->
+      <div class="space-y-4">
+        <div class="space-y-1">
+          <p class="font-display text-2xl sm:text-3xl font-extrabold text-amber-300 tracking-wide leading-snug">
+            Ești din sectorul 3?
+          </p>
+          <p class="font-display text-lg sm:text-xl font-bold text-amber-400/80 tracking-wide leading-snug italic">
+            De pulă să mă iei
+          </p>
+        </div>
+      </div>
+
+      <!-- The "MAZE" text with glowing flicker neon animation -->
+      <div class="pt-2">
+        <div class="inline-block py-2.5 px-7 rounded-xl bg-autumn-950/40 border border-autumn-900/30 shadow-inner">
+          <span class="font-display font-black text-4xl sm:text-5xl tracking-[0.25em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-amber-100 to-white block animate-neon-glow">
+            MAZE
+          </span>
+        </div>
+      </div>
+
+      <p class="text-[9px] text-autumn-500/70 font-mono tracking-widest uppercase pt-3 animate-pulse">
+        Atinge ecranul pentru a începe
+      </p>
     </div>
-    <div class="text-xs font-mono text-autumn-400/80 bg-cozy-card/40 py-1 px-2.5 rounded-full border border-cozy-border/30 backdrop-blur-sm" id="mission-badge">
-      Bucharest • Misiunea 1
-    </div>
+  </div>
+
+  <!-- Header Branding Spacer -->
+  <header class="w-full max-w-md mx-auto pt-8 px-6 flex justify-end items-center z-10 relative">
+    <div class="hidden" id="mission-badge"></div>
   </header>
 
   <!-- Main Container: phone-optimized layout -->
@@ -207,31 +242,33 @@
     <!-- ================= ECRANUL 1: Start Screen ================= -->
     <div id="setup-screen" class="space-y-6 transition-all duration-500 transform scale-100 opacity-100">
       
-      <!-- Visual Banner Card -->
+       <!-- Visual Banner Card with Interactive Staggered Entrances -->
       <div class="text-center space-y-4">
-        <div class="relative inline-block mx-auto mb-2">
-          <div class="absolute inset-0 rounded-full bg-autumn-500/15 blur-xl animate-pulse"></div>
+        <div id="setup-logo-wrapper" class="relative inline-block mx-auto mb-2">
+          <!-- Ambient glowing backgrounds expanding during startup -->
+          <div class="absolute inset-0 rounded-full bg-autumn-500/25 blur-2xl animate-pulse"></div>
           <div class="w-22 h-22 rounded-full border border-autumn-500/20 bg-cozy-card flex items-center justify-center relative shadow-inner">
-            <i data-lucide="map-pin" class="w-11 h-11 text-autumn-500"></i>
+            <!-- Custom High-End Cyber Labyrinth Map path visual -->
+            <svg class="w-12 h-12 text-autumn-500 relative z-10 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3h18v18H3z"/>
+              <path d="M21 9h-6v6"/>
+              <path d="M3 15h6V9h6"/>
+              <path d="M9 3v6"/>
+              <path d="M15 15v6"/>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" class="animate-ping"/>
+            </svg>
+            <div class="absolute inset-0 rounded-full border-2 border-autumn-500/30 animate-ping opacity-60"></div>
           </div>
         </div>
         
-        <h1 class="text-4xl font-display font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-autumn-400 to-amber-300">
-          Urban Hunter
+        <h1 id="setup-title-1" class="hidden text-0.5xl">
         </h1>
-        
-        <p class="font-display text-xl sm:text-2xl font-bold text-amber-300 tracking-wide max-w-xs mx-auto leading-snug">
-          Esti din sectorul 3?  
-        </p>
-        <p class="font-display text-xl sm:text-2xl font-bold text-amber-300 tracking-wide max-w-xs mx-auto leading-snug">
-          De pula sa ma iei
-        </p>
       </div>
 
-      <!-- Action Form Card -->
-      <div class="bg-gradient-to-b from-cozy-card to-cozy-card/90 border border-cozy-border rounded-2xl p-6 shadow-xl shadow-black/40 space-y-5 backdrop-blur-md relative overflow-hidden">
+      <!-- Action Form Card with Entrance and Floating Quantum Loader -->
+      <div id="setup-form-card" class="bg-gradient-to-b from-cozy-card to-cozy-card/90 border border-cozy-border rounded-2xl p-6 shadow-xl shadow-black/40 space-y-5 backdrop-blur-md relative overflow-hidden">
         <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-autumn-500/50 to-transparent"></div>
-        
+
         <div>
           <label for="username" class="block text-xs font-medium uppercase tracking-widest text-autumn-300 mb-2">
             Numele tău de explorator
@@ -277,13 +314,17 @@
       
       <!-- Explorer Welcome Title -->
       <div class="text-center space-y-3">
-        <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
-          Misiunea #1 • Prima Destinație
+        <div id="m1-badge" class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
+          Plimbarea de seara - Labirintul 1
         </div>
         
-        <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
-          Prima Destinație • Recunosti poza de mai jos? Indreapta-te spre Domino<span id="mission-user-name" class="hidden"></span>
+        <h2 id="m1-h2-title" class="text-2xl font-display font-semibold tracking-tight text-amber-100">
+          Recunoști locația?<span id="mission-user-name" class="hidden"></span>
         </h2>
+        
+        <p id="m1-p-desc" class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
+          Îndreaptă-te spre ea. Jos vei vedea cât mai ai până ajungi. Acolo se va debloca următorul labirint.
+        </p>
       </div>
 
       <!-- Main Mission Clue and Distance Card -->
@@ -300,11 +341,6 @@
             onerror="this.src='https://images.unsplash.com/photo-1549693578-d683be217e58?auto=format&fit=crop&q=80&w=600&h=400'; console.log('dominos.jpg fallback loaded smoothly');"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-cozy-dark/80 via-transparent to-transparent pointer-events-none"></div>
-          
-          <div class="absolute bottom-3 left-3 text-xs bg-cozy-dark/95 border border-cozy-border/80 py-1 px-2 rounded-md backdrop-blur-sm flex items-center gap-1.5 font-mono text-[9px] tracking-wider text-autumn-300">
-            <i data-lucide="compass" class="w-3.5 h-3.5 text-autumn-500"></i>
-            <span>OBIECTIVUL #1</span>
-          </div>
         </div>
 
         <!-- Manual Distance Tracker Grid (Visible before matching target) -->
@@ -333,11 +369,27 @@
               <span id="refresh-btn-text">Verifică Distanța / Refresh</span>
             </button>
 
+            <!-- Hint Button M1 -->
+            <button 
+              id="btn-hint-1"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer mt-1"
+            >
+              <i data-lucide="help-circle" class="w-4 h-4 text-white"></i>
+              <span>Arată Indiciu / Hint</span>
+            </button>
+
+            <!-- Hint Text Box M1 -->
+            <div id="hint-text-box-1" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center space-y-1 animate-fade-in-up">
+              <span class="font-bold flex items-center justify-center gap-1.5 font-sans">💡 Indiciu Locație:</span>
+              <p class="leading-relaxed text-[11px]">Mergi Spre Dominos de pe Jean Steriadi colț cu Fetești</p>
+            </div>
+
             <!-- Subtle Tester Assistant (Awesome workflow simulation helper so they can test easily) -->
             <button 
               id="btn-simulate-gps"
               type="button"
-              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+              class="hidden text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
               Simulează Sosirea (&lt;5m)
@@ -386,9 +438,9 @@
     <div id="mission2-screen" class="hidden opacity-0 transform scale-95 transition-all duration-500 space-y-6">
       
       <!-- Explorer Welcome Title -->
-      <div class="text-center space-y-3">
+      <div id="m2-header" class="text-center space-y-3">
         <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
-          Misiunea #2 • Blind GPS
+          Plimbarea de seara - Labirintul 2
         </div>
         
         <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
@@ -406,12 +458,6 @@
 
         <!-- Manual Distance Tracker Grid for Mission 2 -->
         <div id="distance-panel2" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
-          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
-            <span class="relative flex h-2 w-2">
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-            </span>
-            Senzor GPS Pasiv
-          </div>
           
           <div class="space-y-1">
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
@@ -430,11 +476,27 @@
               <span id="refresh-btn-text2">Verifică Distanța / Refresh</span>
             </button>
 
+            <!-- Hint Button M2 -->
+            <button 
+              id="btn-hint-2"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer mt-1"
+            >
+              <i data-lucide="help-circle" class="w-4 h-4 text-white"></i>
+              <span>Arată Indiciu / Hint</span>
+            </button>
+
+            <!-- Hint Text Box M2 -->
+            <div id="hint-text-box-2" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center space-y-1 animate-fade-in-up">
+              <span class="font-bold flex items-center justify-center gap-1.5 font-sans">💡 Indiciu:</span>
+              <p class="leading-relaxed text-[11px]">Mergi spre biserica</p>
+            </div>
+
             <!-- Subtle Tester Assistant for Mission 2 -->
             <button 
               id="btn-simulate-gps2"
               type="button"
-              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+              class="hidden text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
               Simulează Sosirea (&lt;5m)
@@ -474,6 +536,24 @@
                 placeholder="Ex. 15 sau 40" 
                 class="w-full bg-cozy-input border border-cozy-border rounded-xl py-3 pl-9 pr-4 text-center font-display font-bold text-lg text-amber-100 placeholder-autumn-500/30 focus:outline-none focus:ring-1 focus:ring-autumn-500 focus:border-autumn-500 transition-all shadow-inner"
               />
+            </div>
+
+
+          </div>
+
+          <!-- Hint Riddle Button for M2 -->
+          <div class="text-center pt-2">
+            <button 
+              id="btn-riddle-hint-m2"
+              type="button"
+              class="inline-flex items-center justify-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 underline decoration-dotted underline-offset-4 transition-all cursor-pointer font-medium"
+            >
+              <i data-lucide="help-circle" class="w-3.5 h-3.5 animate-pulse"></i>
+              <span>Vrei un indiciu pentru ghicitoare?</span>
+            </button>
+            <div id="riddle-hint-box-m2" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center mt-2.5 animate-fade-in-up">
+              <span class="font-bold flex items-center justify-center gap-1.5 font-sans mb-1 text-amber-400">💡 Indiciu Ghicitoare:</span>
+              <p class="leading-relaxed text-[11px]">Cifra pe care o cauți este 82.</p>
             </div>
           </div>
 
@@ -540,14 +620,14 @@
       <!-- Explorer Welcome Title -->
       <div class="text-center space-y-3">
         <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
-          Misiunea #3 • Marele Instinct
+          Plimbarea de seara - Labirintul 3
         </div>
         
-        <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
+        <h2 id="m3-h2-title" class="text-2xl font-display font-semibold tracking-tight text-amber-100">
           Următoarea Destinație
         </h2>
         
-        <p class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
+        <p id="m3-p-desc" class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
           Următoarea destinație te așteaptă. Mergi după instinct și urmărește metrii. Când ajungi la 0, privește în jur și răspunde la întrebare.
         </p>
       </div>
@@ -558,12 +638,6 @@
 
         <!-- Manual Distance Tracker Grid for Mission 3 -->
         <div id="distance-panel3" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
-          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
-            <span class="relative flex h-2 w-2">
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-            </span>
-            Senzor GPS Pasiv M3
-          </div>
           
           <div class="space-y-1">
             <p class="text-xl sm:text-2xl font-display font-semibold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-autumn-300 to-amber-200">
@@ -582,11 +656,27 @@
               <span id="refresh-btn-text3">Verifică Distanța / Refresh</span>
             </button>
 
+            <!-- Hint Button M3 -->
+            <button 
+              id="btn-hint-3"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer mt-1"
+            >
+              <i data-lucide="help-circle" class="w-4 h-4 text-white"></i>
+              <span>Arată Indiciu / Hint</span>
+            </button>
+
+            <!-- Hint Text Box M3 -->
+            <div id="hint-text-box-3" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center space-y-1 animate-fade-in-up">
+              <span class="font-bold flex items-center justify-center gap-1.5 font-sans">💡 Indiciu:</span>
+              <p class="leading-relaxed text-[11px]">Treci de secția de poliție.</p>
+            </div>
+
             <!-- Subtle Tester Assistant for Mission 3 -->
             <button 
               id="btn-simulate-gps3"
               type="button"
-              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+              class="hidden text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
               Simulează Sosirea (&lt;5m)
@@ -623,6 +713,23 @@
                 autocomplete="off"
                 class="w-full bg-cozy-input border border-cozy-border rounded-xl py-3 pl-10 pr-4 text-center text-sm font-semibold text-amber-100 placeholder-autumn-500/30 focus:outline-none focus:ring-1 focus:ring-autumn-500 focus:border-autumn-500 transition-all shadow-inner"
               />
+            </div>
+
+          </div>
+
+          <!-- Hint Riddle Button for M3 -->
+          <div class="text-center pt-2">
+            <button 
+              id="btn-riddle-hint-m3"
+              type="button"
+              class="inline-flex items-center justify-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 underline decoration-dotted underline-offset-4 transition-all cursor-pointer font-medium"
+            >
+              <i data-lucide="help-circle" class="w-3.5 h-3.5 animate-pulse"></i>
+              <span>Vrei un indiciu pentru ghicitoare?</span>
+            </button>
+            <div id="riddle-hint-box-m3" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center mt-2.5 animate-fade-in-up">
+              <span class="font-bold flex items-center justify-center gap-1.5 font-sans mb-1 text-amber-400">💡 Indiciu Ghicitoare:</span>
+              <p class="leading-relaxed text-[11px]">Răspunsul este 1 decembrie 1918.</p>
             </div>
           </div>
 
@@ -689,12 +796,16 @@
       <!-- Explorer Welcome Title -->
       <div class="text-center space-y-3">
         <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
-          Misiunea #4 • Busola Misterioasă
+          Plimbarea de seara - Labirintul 4
         </div>
         
-        <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
-          Urmează Busola. Când ajungi aproape de 0, se va debloca urmatorul indiciu.
+        <h2 id="m4-h2-title" class="text-2xl font-display font-semibold tracking-tight text-amber-100">
+          Urmează Busola
         </h2>
+        
+        <p id="m4-p-desc" class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
+          Când ajungi aproape de 0, se va debloca următorul indiciu.
+        </p>
       </div>
 
       <!-- Main Mission Clue and Distance Card -->
@@ -704,7 +815,7 @@
         <!-- Manual Distance Tracker & Compass Grid for Mission 4 -->
         <div id="distance-panel4" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
           
-          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
+          <div class="hidden flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
             <span class="relative flex h-2 w-2">
               <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500 animate-ping"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
@@ -730,11 +841,11 @@
               </div>
 
             </div>
-            <p id="compass-angle-text" class="text-[10px] text-autumn-400 font-mono mt-2 tracking-wider">Direcție: —°</p>
+            <p id="compass-angle-text" class="hidden text-[10px] text-autumn-400 font-mono mt-2 tracking-wider">Direcție: —°</p>
             
             <!-- Dynamic Simulator Slider for manual desktop/laptop testing -->
             <div class="w-full max-w-[150px] mx-auto pt-2 space-y-1">
-              <label for="compass-sim-slider" class="text-[9px] text-autumn-500 font-mono block">Rotire manuală (Simulare Desktop):</label>
+              <label for="compass-sim-slider" class="hidden text-[9px] text-autumn-500 font-mono block">Rotire manuală (Simulare Desktop):</label>
               <input 
                 type="range" 
                 id="compass-sim-slider" 
@@ -763,11 +874,26 @@
               <span id="refresh-btn-text4">Verifică Distanța / Refresh</span>
             </button>
 
+            <!-- Hint Button M4 -->
+            <button 
+              id="btn-hint-4"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer mt-1"
+            >
+              <i data-lucide="help-circle" class="w-4 h-4 text-white"></i>
+              <span>Arată Indiciu / Hint</span>
+            </button>
+
+            <!-- Hint Text Box M4 -->
+            <div id="hint-text-box-4" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center space-y-1 animate-fade-in-up">
+              <p class="leading-relaxed text-[11px]">Urmează busola spre stație.</p>
+            </div>
+
             <!-- Tester simulation helper -->
             <button 
               id="btn-simulate-gps4"
               type="button"
-              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+              class="hidden text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
               Simulează Sosirea (&lt;5m)
@@ -805,15 +931,17 @@
                 class="w-full bg-cozy-input border border-cozy-border rounded-xl py-3 pl-8 pr-4 text-center text-sm font-semibold text-amber-100 placeholder-autumn-500/30 focus:outline-none focus:ring-1 focus:ring-autumn-500 focus:border-autumn-500 transition-all shadow-inner"
               />
             </div>
+
+
           </div>
 
           <!-- Error Alert State banner for stairs validation -->
           <div 
             id="stairs-error-banner" 
-            class="hidden bg-autumn-950/85 border border-autumn-900/50 rounded-xl p-3 flex justify-center items-center gap-2 text-xs text-red-400 animate-fade-in-up"
+            class="hidden bg-autumn-950/85 border border-autumn-900/50 rounded-xl p-3 flex justify-center items-center gap-2 text-xs text-amber-400 animate-fade-in-up"
           >
-            <i data-lucide="x-circle" class="w-4 h-4 text-red-550"></i>
-            <span>Mai numără o dată, nu e ăsta numărul.</span>
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+            <span>Nu am stat sa număr scările, trece direct 20.</span>
           </div>
 
           <!-- Success banner and Final finish adventure trigger -->
@@ -834,8 +962,8 @@
               type="button"
               class="w-full bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 hover:from-emerald-600 text-white font-display font-semibold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer mt-2"
             >
-              <span>Mergi la Misiunea 5</span>
-              <i data-lucide="compass" class="w-4 h-4"></i>
+              <span>Avansează la Labirintul 5</span>
+              <i data-lucide="route" class="w-4 h-4 text-emerald-100 animate-pulse"></i>
             </button>
           </div>
 
@@ -870,14 +998,14 @@
       <!-- Explorer Welcome Title -->
       <div class="text-center space-y-3">
         <div class="text-[10px] font-mono text-amber-400 bg-autumn-950/80 py-1 px-3 rounded-full border border-autumn-900/40 inline-block uppercase tracking-wider">
-          Misiunea #5 • Potolire și Reîncărcare
+          Plimbarea de seara - Labirintul 5
         </div>
         
-        <h2 class="text-2xl font-display font-semibold tracking-tight text-amber-100">
-          Urmează Busola spre Răsplată
+        <h2 id="m5-h2-title" class="text-2xl font-display font-semibold tracking-tight text-amber-100">
+          Urmează Busola spre Destinația Finală
         </h2>
         
-        <p class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
+        <p id="m5-p-desc" class="text-xs text-autumn-250 font-serif italic max-w-xs mx-auto leading-relaxed px-1">
           Ai coborât la Grigorescu. Acum urca inapoi si urmează busola către punctul final.
         </p>
       </div>
@@ -889,7 +1017,7 @@
         <!-- Manual Distance Tracker & Compass Grid for Mission 5 -->
         <div id="distance-panel5" class="text-center py-4 px-3 bg-cozy-input/60 rounded-xl border border-cozy-border/50 space-y-4 transition-all duration-300">
           
-          <div class="flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
+          <div class="hidden flex items-center justify-center gap-2 text-[10px] text-autumn-400 uppercase tracking-widest font-mono">
             <span class="relative flex h-2 w-2">
               <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500 animate-ping"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
@@ -918,7 +1046,7 @@
             <p id="compass-angle-text5" class="text-[10px] text-autumn-400 font-mono mt-2 tracking-wider">Direcție: —°</p>
             
             <!-- Dynamic Simulator Slider for manual desktop/laptop testing -->
-            <div class="w-full max-w-[150px] mx-auto pt-2 space-y-1">
+            <div class="hidden w-full max-w-[150px] mx-auto pt-2 space-y-1">
               <label for="compass-sim-slider5" class="text-[9px] text-autumn-500 font-mono block">Rotire manuală (Simulare Desktop):</label>
               <input 
                 type="range" 
@@ -948,11 +1076,27 @@
               <span id="refresh-btn-text5">Verifică Distanța / Refresh</span>
             </button>
 
+            <!-- Hint Button M5 -->
+            <button 
+              id="btn-hint-5"
+              type="button"
+              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 to-amber-500 text-white font-display font-medium py-3 px-4 rounded-xl shadow-md hover:shadow-lg active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer mt-1"
+            >
+              <i data-lucide="help-circle" class="w-4 h-4 text-white"></i>
+              <span>Arată Indiciu / Hint</span>
+            </button>
+
+            <!-- Hint Text Box M5 -->
+            <div id="hint-text-box-5" class="hidden text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 text-center space-y-1 animate-fade-in-up">
+              <span class="font-bold flex items-center justify-center gap-1.5 font-sans">💡 Indiciu Final:</span>
+              <p class="leading-relaxed text-[11px]">Mergi cu săgeată</p>
+            </div>
+
             <!-- Tester simulation helper -->
             <button 
               id="btn-simulate-gps5"
               type="button"
-              class="text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
+              class="hidden text-[10px] font-mono text-autumn-500/80 hover:text-amber-400 py-1.5 px-3.5 rounded-lg bg-cozy-dark/70 hover:bg-cozy-dark border border-cozy-border/40 hover:border-autumn-500/40 transition-all mx-auto flex items-center gap-1.5 cursor-pointer mt-1"
             >
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-autumn-400"></i>
               Simulează Sosirea (&lt;5m)
@@ -963,43 +1107,49 @@
         <!-- Yes/No Question and final choices for Mission 5 (Initially hidden, revealed on arrival, hides GPS & compass) -->
         <div id="validation-panel5" class="hidden space-y-4 pt-4">
           
-          <!-- Riddle Introduction box -->
-          <div class="bg-gradient-to-br from-amber-500/10 to-cozy-dark border border-amber-500/20 rounded-xl p-4 text-center space-y-3 mb-3">
-            <div class="w-12 h-12 rounded-full bg-amber-500/15 flex items-center justify-center mx-auto text-amber-400 border border-amber-500/30 animate-pulse">
-              <i data-lucide="beer" class="w-6 h-6"></i>
+          <!-- Riddle Introduction/Question box -->
+          <div id="mic-bere-question-panel" class="space-y-4">
+            <div class="bg-gradient-to-br from-amber-95/40 to-cozy-dark border border-amber-500/20 rounded-xl p-4 text-center space-y-2 mb-3">
+              <div class="w-10 h-10 rounded-full bg-amber-550/15 flex items-center justify-center mx-auto text-amber-400 border border-amber-500/30">
+                <i data-lucide="help-circle" class="w-5 h-5 animate-pulse"></i>
+              </div>
+              <h3 class="font-display font-medium text-amber-300 text-sm">Destinație Atinsă!</h3>
+              <p class="font-display font-bold text-amber-100 text-base py-1 leading-snug">
+                Și? Acum mâncăm un mic și bem o bere? 🍻🌭
+              </p>
             </div>
-            <h3 class="font-display font-bold text-amber-300 text-lg">Destinație Atinsă!</h3>
-            <p class="font-display font-bold text-amber-100 text-base py-1.5 leading-snug">
-              Și? Acum mâncăm un mic și bem o bere?
-            </p>
+
+            <div class="space-y-3">
+              <button 
+                id="btn-mic-bere-yes" 
+                type="button"
+                class="w-full relative group overflow-hidden bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-display font-semibold py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Daaaa! Normal, doar nu ne-am plimbat degeaba! 🌭🍺</span>
+              </button>
+
+              <button 
+                id="btn-mic-bere-of-course" 
+                type="button"
+                class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 via-amber-500 to-autumn-500 hover:from-amber-500 hover:to-autumn-400 text-white font-display font-semibold py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Moarte muștarului! Să curgă berea rece! 🍺✨🤤</span>
+              </button>
+            </div>
           </div>
 
-          <div class="space-y-3">
-            <button 
-              id="btn-mic-bere-yes" 
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-display font-semibold py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Daaaa! 🍻 Normal! 🌭</span>
-            </button>
-
-            <button 
-              id="btn-mic-bere-of-course" 
-              type="button"
-              class="w-full relative group overflow-hidden bg-gradient-to-r from-amber-600 via-amber-500 to-autumn-500 hover:from-amber-500 hover:to-autumn-400 text-white font-display font-semibold py-3.5 px-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Doar mici cu muștar și bere rece! 🍺✨</span>
-            </button>
-          </div>
-
-          <!-- Success ultimate screen trigger -->
+          <!-- Success ultimate screen trigger (Initially Hidden) -->
           <div 
             id="mic-bere-success-banner" 
-            class="hidden bg-emerald-950/80 border border-emerald-800/40 rounded-xl p-4 text-center space-y-3 text-xs text-emerald-200 animate-fade-in-up"
+            class="hidden bg-emerald-950/80 border border-emerald-800/40 rounded-xl p-5 text-center space-y-4 text-xs text-emerald-200 animate-fade-in-up"
           >
-            <div class="flex items-center justify-center gap-1.5 text-emerald-400 font-semibold font-display text-sm">
-              <i data-lucide="party-popper" class="w-4.5 h-4.5"></i>
-              <span>Poftă mare de tot! 🍻🔥</span>
+            <div class="w-12 h-12 rounded-full bg-emerald-500/15 flex items-center justify-center mx-auto text-emerald-400 border border-emerald-500/30 animate-pulse">
+              <i data-lucide="party-popper" class="w-6 h-6"></i>
+            </div>
+            
+            <div class="space-y-1">
+              <h3 class="font-display font-medium text-emerald-400 text-[15px] uppercase tracking-wider">Destinație Atinsă!</h3>
+              <p class="font-display font-bold text-emerald-100 text-lg">Poftă mare! 🍻🌭</p>
             </div>
             
             <button 
@@ -1083,33 +1233,37 @@
     // Initialize Lucide vector icons initially
     lucide.createIcons();
 
-    // 1. Dynamic Falling Leaves Particle Generator
+    // 1. Dynamic Falling Cyber Particles & Labyrinth Matrix Streams
     function createFallingLeaves() {
       const container = document.getElementById('leaves-container');
       if (!container) return;
       
-      const colors = ['#d17251', '#c25838', '#9d4229', '#f59e0b', '#b45309', '#78350f'];
-      const leafTypes = [
-        // Maple leaf contour path
-        `<path d="M12 2C11.5 4 9.5 5 9 6.5C8.5 8 9.5 9 8 10C6.5 11 5 10 4 11C3 12 3.5 13.5 4.5 14C5.5 14.5 7 13.5 8 14.5C9 15.5 8 17 9 18.5C10 20 11.5 19.5 12 21.5C12.5 19.5 14 20 15 18.5C16 17 15 15.5 16 14.5C17 13.5 18.5 14.5 19.5 14C20.5 13.5 21 12 20 11C19 10 17.5 11 16 10C14.5 9 15.5 8 15 6.5C14.5 5 12.5 4 12 2Z" fill="CURRENT_COLOR" opacity="0.8"/>`,
-        // Simple oval leaf
-        `<path d="M12 2C8 6 6 12 12 22C18 12 16 6 12 2Z" fill="CURRENT_COLOR" opacity="0.75"/>`,
-        // Oak-like wavy contour path
-        `<path d="M12 2C10.5 3.5 11 5 9.5 6.5C8 8 7 7.5 6 9C5 10.5 6 12 5 13.5C4 15 4.5 16.5 6 17.5C7.5 18.5 8.5 17 10 18.5C11.5 20 11 21.5 12 22C13 21.5 12.5 20 14 18.5C15.5 17 16.5 18.5 18 17.5C19.5 16.5 20 15 19 13.5C18 12 19 10.5 18 9C17 7.5 16 8 14.5 6.5C13 5 13.5 3.5 12 2Z" fill="CURRENT_COLOR" opacity="0.8"/>`
+      const colors = ['#00ffff', '#ff007f', '#a855f7', '#10b981', '#3b82f6'];
+      const dataElements = [
+        // Pulsing maze cell node
+        `<circle cx="12" cy="12" r="7" stroke="CURRENT_COLOR" stroke-width="2" fill="none" opacity="0.8"/>`,
+        // Binary digital token "0"
+        `<text x="4" y="16" fill="CURRENT_COLOR" font-family="monospace" font-size="14" font-weight="900" opacity="0.85">0</text>`,
+        // Binary digital token "1"
+        `<text x="4" y="16" fill="CURRENT_COLOR" font-family="monospace" font-size="14" font-weight="900" opacity="0.85">1</text>`,
+        // Glowing miniature grid maze wall connector
+        `<path d="M4 4h16v16" stroke="CURRENT_COLOR" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.75"/>`,
+        // Custom neon matrix plus gateway
+        `<path d="M12 5v14M5 12h14" stroke="CURRENT_COLOR" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>`
       ];
 
-      const leafCount = 10; // Clean performance, gorgeous backdrop
+      const leafCount = 14; // Perfectly optimized, sleek backdrops
       
       for (let i = 0; i < leafCount; i++) {
         const leaf = document.createElement('div');
         leaf.className = 'leaf-particle';
         
-        const size = Math.random() * 18 + 12; // 12px to 30px
+        const size = Math.random() * 16 + 12; // 12px to 28px
         const left = Math.random() * 100;
-        const delay = Math.random() * 12;
-        const duration = Math.random() * 8 + 12; // 12s to 20s
+        const delay = Math.random() * 10;
+        const duration = Math.random() * 6 + 8; // 8s to 14s (slightly faster for a vibrant reactive feel!)
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        const randomPath = leafTypes[Math.floor(Math.random() * leafTypes.length)].replace('CURRENT_COLOR', randomColor);
+        const randomPath = dataElements[Math.floor(Math.random() * dataElements.length)].replace(/CURRENT_COLOR/g, randomColor);
         
         leaf.style.left = `${left}vw`;
         leaf.style.width = `${size}px`;
@@ -1127,6 +1281,8 @@
     }
 
     createFallingLeaves();
+
+
 
     // 2. Coordonate Țintă - Pasul 2, Pasul 3, Pasul 4 (Misiunea 3) & Pasul 5 (Misiunea 4), Pasul 6 (Misiunea 5)
     const TARGET_LAT = 44.413629;
@@ -1235,6 +1391,7 @@
     const compassNeedle5 = document.getElementById('compass-needle5');
     const compassAngleText5 = document.getElementById('compass-angle-text5');
     const validationPanel5 = document.getElementById('validation-panel5');
+    const micBereQuestionPanel = document.getElementById('mic-bere-question-panel');
     const btnMicBereYes = document.getElementById('btn-mic-bere-yes');
     const btnMicBereOfCourse = document.getElementById('btn-mic-bere-of-course');
     const micBereSuccessBanner = document.getElementById('mic-bere-success-banner');
@@ -1244,6 +1401,29 @@
     const finalUserName = document.getElementById('final-user-name');
     const finalStatsName = document.getElementById('final-stats-name');
     const btnRestartAdventure = document.getElementById('btn-restart-adventure');
+
+    // Hint and Simulation helper DOM references
+    const btnHint1 = document.getElementById('btn-hint-1');
+    const hintTextBox1 = document.getElementById('hint-text-box-1');
+    const btnHint2 = document.getElementById('btn-hint-2');
+    const hintTextBox2 = document.getElementById('hint-text-box-2');
+    const validationHint2 = document.getElementById('validation-hint-display-2');
+    const btnHint3 = document.getElementById('btn-hint-3');
+    const hintTextBox3 = document.getElementById('hint-text-box-3');
+    const validationHint3 = document.getElementById('validation-hint-display-3');
+    const btnHint4 = document.getElementById('btn-hint-4');
+    const hintTextBox4 = document.getElementById('hint-text-box-4');
+    const validationHint4 = document.getElementById('validation-hint-display-4');
+    const btnHint5 = document.getElementById('btn-hint-5');
+    const hintTextBox5 = document.getElementById('hint-text-box-5');
+
+    // Riddle hint elements for Mission 2
+    const btnRiddleHintM2 = document.getElementById('btn-riddle-hint-m2');
+    const riddleHintBoxM2 = document.getElementById('riddle-hint-box-m2');
+
+    // Riddle hint elements for Mission 3
+    const btnRiddleHintM3 = document.getElementById('btn-riddle-hint-m3');
+    const riddleHintBoxM3 = document.getElementById('riddle-hint-box-m3');
 
     // 3. Formula Haversine pentru a calcula distanța în metri
     function getHaversineDistance(lat1, lon1, lat2, lon2) {
@@ -1353,7 +1533,7 @@
         
         // Show mission screen 2
         mission2Screen.classList.remove('hidden');
-        missionBadge.textContent = "Bucharest • Misiunea 2";
+        missionBadge.textContent = "Nivel 2";
         
         setTimeout(() => {
           mission2Screen.classList.remove('opacity-0', 'scale-95');
@@ -1375,7 +1555,11 @@
         
         // Show mission screen 3
         mission3Screen.classList.remove('hidden');
-        missionBadge.textContent = "Bucharest • Misiunea 3";
+        missionBadge.textContent = "Nivel 3";
+        
+        // Ensure headers are visible
+        document.getElementById('m3-h2-title')?.classList.remove('hidden');
+        document.getElementById('m3-p-desc')?.classList.remove('hidden');
         
         setTimeout(() => {
           mission3Screen.classList.remove('opacity-0', 'scale-95');
@@ -1397,7 +1581,11 @@
         
         // Show mission screen 4
         mission4Screen.classList.remove('hidden');
-        missionBadge.textContent = "Bucharest • Misiunea 4";
+        missionBadge.textContent = "Nivel 4";
+
+        // Ensure headers are visible
+        document.getElementById('m4-h2-title')?.classList.remove('hidden');
+        document.getElementById('m4-p-desc')?.classList.remove('hidden');
         
         setTimeout(() => {
           mission4Screen.classList.remove('opacity-0', 'scale-95');
@@ -1420,7 +1608,11 @@
         
         // Show mission screen 5
         mission5Screen.classList.remove('hidden');
-        missionBadge.textContent = "Bucharest • Misiunea 5";
+        missionBadge.textContent = "Nivel 5";
+
+        // Ensure headers are visible
+        document.getElementById('m5-h2-title')?.classList.remove('hidden');
+        document.getElementById('m5-p-desc')?.classList.remove('hidden');
         
         setTimeout(() => {
           mission5Screen.classList.remove('opacity-0', 'scale-95');
@@ -1442,7 +1634,7 @@
         
         // Show finish screen
         finishScreen.classList.remove('hidden');
-        missionBadge.textContent = "Aventură Completă!";
+        missionBadge.textContent = "Labirint Completat! 🏆";
         
         // Update user names across stats cards
         finalUserName.textContent = userNameValue;
@@ -1882,6 +2074,14 @@
       distancePanel.classList.add('hidden');
       gpsErrorPanel.classList.add('hidden');
 
+      // Hide titles on arrival
+      const m1Badge = document.getElementById('m1-badge');
+      if (m1Badge) m1Badge.classList.add('hidden');
+      const m1H2Title = document.getElementById('m1-h2-title');
+      if (m1H2Title) m1H2Title.classList.add('hidden');
+      const m1PDesc = document.getElementById('m1-p-desc');
+      if (m1PDesc) m1PDesc.classList.add('hidden');
+
       // Vibrate if supported
       triggerHapticVibration();
 
@@ -1895,6 +2095,12 @@
       
       // We set remaining distance meters visual placeholder to 0 for pristine client feedback
       distanceMeters2.textContent = "0";
+
+      // Hide header and GPS indicator for a fresh scroll-free view
+      const m2Header = document.getElementById('m2-header');
+      if (m2Header) m2Header.classList.add('hidden');
+      if (distancePanel2) distancePanel2.classList.add('hidden');
+      if (gpsErrorPanel2) gpsErrorPanel2.classList.add('hidden');
 
       // Reveal clue validation section smoothly when within precision range
       const validationPanel2 = document.getElementById('validation-panel2');
@@ -1920,6 +2126,10 @@
       if (gpsErrorPanel3) {
         gpsErrorPanel3.classList.add('hidden');
       }
+
+      // Hide header text
+      document.getElementById('m3-h2-title')?.classList.add('hidden');
+      document.getElementById('m3-p-desc')?.classList.add('hidden');
 
       // Reveal clue validation section smoothly when within precision range
       validationPanel3.classList.remove('hidden');
@@ -1947,6 +2157,10 @@
       if (gpsErrorPanel4) {
         gpsErrorPanel4.classList.add('hidden');
       }
+
+      // Hide header text
+      document.getElementById('m4-h2-title')?.classList.add('hidden');
+      document.getElementById('m4-p-desc')?.classList.add('hidden');
 
       // Reveal clue validation section smoothly when within precision range
       if (validationPanel4) {
@@ -1977,10 +2191,22 @@
         gpsErrorPanel5.classList.add('hidden');
       }
 
+      // Hide header text
+      document.getElementById('m5-h2-title')?.classList.add('hidden');
+      document.getElementById('m5-p-desc')?.classList.add('hidden');
+
       // Reveal clue validation section smoothly when within precision range
       if (validationPanel5) {
         validationPanel5.classList.remove('hidden');
         validationPanel5.classList.add('animate-fade-in-up');
+      }
+
+      if (micBereQuestionPanel) {
+        micBereQuestionPanel.classList.remove('hidden');
+      }
+
+      if (micBereSuccessBanner) {
+        micBereSuccessBanner.classList.add('hidden');
       }
       
       // Initial setup for new elements inside the panel (in case Lucide needs render)
@@ -2045,6 +2271,64 @@
     }
     if (btnRefreshGps5) {
       btnRefreshGps5.addEventListener('click', calculateManualDistance5);
+    }
+
+    // Hint Event Listeners to reveal simulation and answer hints
+    if (btnHint1) {
+      btnHint1.addEventListener('click', () => {
+        btnHint1.classList.add('hidden');
+        if (hintTextBox1) hintTextBox1.classList.remove('hidden');
+        if (btnSimulateGps) btnSimulateGps.classList.remove('hidden');
+      });
+    }
+
+    if (btnHint2) {
+      btnHint2.addEventListener('click', () => {
+        btnHint2.classList.add('hidden');
+        if (hintTextBox2) hintTextBox2.classList.remove('hidden');
+        if (validationHint2) validationHint2.classList.remove('hidden');
+        if (btnSimulateGps2) btnSimulateGps2.classList.remove('hidden');
+      });
+    }
+
+    if (btnRiddleHintM2) {
+      btnRiddleHintM2.addEventListener('click', () => {
+        btnRiddleHintM2.classList.add('hidden');
+        if (riddleHintBoxM2) riddleHintBoxM2.classList.remove('hidden');
+      });
+    }
+
+    if (btnRiddleHintM3) {
+      btnRiddleHintM3.addEventListener('click', () => {
+        btnRiddleHintM3.classList.add('hidden');
+        if (riddleHintBoxM3) riddleHintBoxM3.classList.remove('hidden');
+      });
+    }
+
+    if (btnHint3) {
+      btnHint3.addEventListener('click', () => {
+        btnHint3.classList.add('hidden');
+        if (hintTextBox3) hintTextBox3.classList.remove('hidden');
+        if (validationHint3) validationHint3.classList.remove('hidden');
+        if (btnSimulateGps3) btnSimulateGps3.classList.remove('hidden');
+      });
+    }
+
+    if (btnHint4) {
+      btnHint4.addEventListener('click', () => {
+        btnHint4.classList.add('hidden');
+        if (hintTextBox4) hintTextBox4.classList.remove('hidden');
+        if (validationHint4) validationHint4.classList.remove('hidden');
+        if (btnSimulateGps4) btnSimulateGps4.classList.remove('hidden');
+      });
+    }
+
+    if (btnHint5) {
+      btnHint5.addEventListener('click', () => {
+        btnHint5.classList.add('hidden');
+        if (hintTextBox5) hintTextBox5.classList.remove('hidden');
+        if (btnSimulateGps5) btnSimulateGps5.classList.remove('hidden');
+      });
     }
 
     // Transitional trigger to launch Step 3 (Misiunea 2)
@@ -2130,6 +2414,9 @@
         // Show validation incorrect warning text
         stairsErrorBanner.classList.remove('hidden');
         stairsErrorBanner.classList.add('flex');
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
       }
     });
 
@@ -2152,17 +2439,23 @@
     // Mission 5 Choice validations
     if (btnMicBereYes) {
       btnMicBereYes.addEventListener('click', () => {
-        btnMicBereYes.classList.add('hidden');
-        btnMicBereOfCourse.classList.add('hidden');
-        micBereSuccessBanner.classList.remove('hidden');
+        if (micBereQuestionPanel) {
+          micBereQuestionPanel.classList.add('hidden');
+        }
+        if (micBereSuccessBanner) {
+          micBereSuccessBanner.classList.remove('hidden');
+        }
       });
     }
 
     if (btnMicBereOfCourse) {
       btnMicBereOfCourse.addEventListener('click', () => {
-        btnMicBereYes.classList.add('hidden');
-        btnMicBereOfCourse.classList.add('hidden');
-        micBereSuccessBanner.classList.remove('hidden');
+        if (micBereQuestionPanel) {
+          micBereQuestionPanel.classList.add('hidden');
+        }
+        if (micBereSuccessBanner) {
+          micBereSuccessBanner.classList.remove('hidden');
+        }
       });
     }
 
@@ -2214,6 +2507,28 @@
         
         // Reset Inputs & states
         inputUsername.value = "";
+        inputUsername.removeAttribute('disabled');
+        inputUsername.classList.remove('opacity-60');
+        btnContinue.removeAttribute('disabled');
+        btnContinue.classList.remove('opacity-60');
+        
+        const introOverlay = document.getElementById('intro-welcome-overlay');
+        if (introOverlay) {
+          introOverlay.style.display = 'none';
+        }
+
+        const setupLogo = document.getElementById('setup-logo-wrapper');
+        const setupTitle1 = document.getElementById('setup-title-1');
+        const setupTitle2 = document.getElementById('setup-title-2');
+        const setupTitle3 = document.getElementById('setup-title-3');
+        const setupCard = document.getElementById('setup-form-card');
+        
+        if (setupLogo) setupLogo.classList.remove('opacity-0', 'translate-y-8', 'scale-75');
+        if (setupTitle1) setupTitle1.classList.remove('opacity-0', 'translate-y-6');
+        if (setupTitle2) setupTitle2.classList.remove('opacity-0', 'translate-y-6');
+        if (setupTitle3) setupTitle3.classList.remove('opacity-0', 'translate-y-6');
+        if (setupCard) setupCard.classList.remove('opacity-0', 'translate-y-8');
+        
         buildingNumberInput.value = "";
         buildingNumberInput.disabled = false;
         buildingNumberInput.parentElement.classList.remove('opacity-50', 'pointer-events-none');
@@ -2239,11 +2554,8 @@
         if (distancePanel5) {
           distancePanel5.classList.remove('hidden');
         }
-        if (btnMicBereYes) {
-          btnMicBereYes.classList.remove('hidden');
-        }
-        if (btnMicBereOfCourse) {
-          btnMicBereOfCourse.classList.remove('hidden');
+        if (micBereQuestionPanel) {
+          micBereQuestionPanel.classList.remove('hidden');
         }
         if (micBereSuccessBanner) {
           micBereSuccessBanner.classList.add('hidden');
@@ -2253,15 +2565,58 @@
         destinationImageContainer.classList.remove('hidden');
         distancePanel.classList.remove('hidden');
         clueUnlockedPanel.classList.add('hidden');
+        const m1Badge = document.getElementById('m1-badge');
+        if (m1Badge) m1Badge.classList.remove('hidden');
+        const m1H2Title = document.getElementById('m1-h2-title');
+        if (m1H2Title) m1H2Title.classList.remove('hidden');
+        const m1PDesc = document.getElementById('m1-p-desc');
+        if (m1PDesc) m1PDesc.classList.remove('hidden');
         
         document.getElementById('validation-panel2').classList.add('hidden');
         distancePanel2.classList.remove('hidden');
+        const m2Header = document.getElementById('m2-header');
+        if (m2Header) m2Header.classList.remove('hidden');
         
         document.getElementById('validation-panel3').classList.add('hidden');
         distancePanel3.classList.remove('hidden');
+        document.getElementById('m3-h2-title')?.classList.remove('hidden');
+        document.getElementById('m3-p-desc')?.classList.remove('hidden');
 
         document.getElementById('validation-panel4').classList.add('hidden');
         distancePanel4.classList.remove('hidden');
+        document.getElementById('m4-h2-title')?.classList.remove('hidden');
+        document.getElementById('m4-p-desc')?.classList.remove('hidden');
+
+        document.getElementById('m5-h2-title')?.classList.remove('hidden');
+        document.getElementById('m5-p-desc')?.classList.remove('hidden');
+
+        // Reset Hint buttons and hide simulation helpers
+        if (btnHint1) btnHint1.classList.remove('hidden');
+        if (hintTextBox1) hintTextBox1.classList.add('hidden');
+        if (btnSimulateGps) btnSimulateGps.classList.add('hidden');
+
+        if (btnHint2) btnHint2.classList.remove('hidden');
+        if (hintTextBox2) hintTextBox2.classList.add('hidden');
+        if (validationHint2) validationHint2.classList.add('hidden');
+        if (btnSimulateGps2) btnSimulateGps2.classList.add('hidden');
+        if (btnRiddleHintM2) btnRiddleHintM2.classList.remove('hidden');
+        if (riddleHintBoxM2) riddleHintBoxM2.classList.add('hidden');
+
+        if (btnHint3) btnHint3.classList.remove('hidden');
+        if (hintTextBox3) hintTextBox3.classList.add('hidden');
+        if (validationHint3) validationHint3.classList.add('hidden');
+        if (btnSimulateGps3) btnSimulateGps3.classList.add('hidden');
+        if (btnRiddleHintM3) btnRiddleHintM3.classList.remove('hidden');
+        if (riddleHintBoxM3) riddleHintBoxM3.classList.add('hidden');
+
+        if (btnHint4) btnHint4.classList.remove('hidden');
+        if (hintTextBox4) hintTextBox4.classList.add('hidden');
+        if (validationHint4) validationHint4.classList.add('hidden');
+        if (btnSimulateGps4) btnSimulateGps4.classList.add('hidden');
+
+        if (btnHint5) btnHint5.classList.remove('hidden');
+        if (hintTextBox5) hintTextBox5.classList.add('hidden');
+        if (btnSimulateGps5) btnSimulateGps5.classList.add('hidden');
 
         // Reset compass simulator elements state
         if (compassSimSlider) {
@@ -2293,7 +2648,7 @@
         distanceMeters5.textContent = "—";
         
         activeMission = 4;
-        missionBadge.textContent = "Bucharest • Misiunea 1";
+        missionBadge.textContent = "Nivel 1";
 
         // Show start screen
         setupScreen.classList.remove('hidden');
@@ -2329,6 +2684,25 @@
       btnSimulateGps5.addEventListener('click', () => {
         handleTarget5Reached();
       });
+    }
+
+    // Interactive Splash Screen Control (Neon Lightup Intro)
+    const splashScreen = document.getElementById('splash-screen');
+    let splashDismissed = false;
+
+    function dismissSplash() {
+      if (splashDismissed) return;
+      splashDismissed = true;
+      if (splashScreen) {
+        splashScreen.classList.add('opacity-0', 'scale-105');
+        setTimeout(() => {
+          splashScreen.classList.add('hidden');
+        }, 700);
+      }
+    }
+
+    if (splashScreen) {
+      splashScreen.addEventListener('click', dismissSplash);
     }
 
 
